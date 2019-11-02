@@ -1,6 +1,7 @@
 const electron = require('electron')
-
 const { app, BrowserWindow } = require('electron')
+
+
 
 // Gardez une reference globale de l'objet window, si vous ne le faites pas, la fenetre sera
 // fermee automatiquement quand l'objet JavaScript sera garbage collected.
@@ -9,28 +10,31 @@ let win
 function createWindow () {
   // Créer le browser window.
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    resizable: false,
+    darkTheme : true,
+    height : 668,
+    width: 1266,
+    transparent: true, 
+    frame: true,
     webPreferences: {
-      nodeIntegration: true
+        devTools: false
     }
   })
 
-  // and load the index.html of the app.
-  win.loadFile('dist/DMART/index.html')
+   // and load the index.html of the app.
+   win.loadFile('dist/DMART/index.html')
 
-  // Ouvre les DevTools.
-  win.webContents.openDevTools()
-
-  // Émit lorsque la fenêtre est fermée.
-  win.on('closed', () => {
-    // Dé-référence l'objet window , normalement, vous stockeriez les fenêtres
-    // dans un tableau si votre application supporte le multi-fenêtre. C'est le moment
-    // où vous devez supprimer l'élément correspondant.
-    win = null
-  })
-}
-
+   // Ouvre les DevTools.
+   win.webContents.openDevTools()
+ 
+   // Émit lorsque la fenêtre est fermée.
+   win.on('closed', () => {
+     // Dé-référence l'objet window , normalement, vous stockeriez les fenêtres
+     // dans un tableau si votre application supporte le multi-fenêtre. C'est le moment
+     // où vous devez supprimer l'élément correspondant.
+     win = null
+   })
+ }
 // Cette méthode sera appelée quand Electron aura fini
 // de s'initialiser et sera prêt à créer des fenêtres de navigation.
 // Certaines APIs peuvent être utilisées uniquement quand cet événement est émit.
