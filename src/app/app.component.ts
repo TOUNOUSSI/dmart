@@ -6,9 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  static API_URL = 'http://localhost:8080/DMART';
+
   title = 'DMART';
 
- exit() {
-  window.close();
- }
+  // To close the electron app
+  exit() {
+    window.close();
+  }
 }
