@@ -6,6 +6,9 @@ import { LoginComponent } from './Views/login/login.component';
 import { SplashscreenComponent } from './views/splashscreen/splashscreen.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
+import { AppRoutingModule} from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -14,9 +17,13 @@ import { AngularMaterialModule } from './angular-material.module';
     SplashscreenComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    AppRoutingModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent],

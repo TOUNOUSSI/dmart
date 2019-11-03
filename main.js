@@ -10,14 +10,13 @@ let win
 function createWindow () {
   // Créer le browser window.
   win = new BrowserWindow({
-    resizable: false,
+    resizable: true,
     darkTheme : true,
     height : 668,
     width: 1266,
-    transparent: true, 
-    frame: true,
+    frame: false,
     webPreferences: {
-        devTools: false
+        devTools: true
     }
   })
 
