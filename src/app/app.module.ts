@@ -53,6 +53,7 @@ import {
 } from '@angular/material';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { XhrInterceptor } from './services/security/xhr.interceptor';
+import { SnackbarService } from './services/notifications/toaster/snackbar.service';
 
 
 @NgModule({
@@ -115,7 +116,7 @@ export class DemoMaterialModule {}
     
 
   ],
-  providers: [AuthService, AccountService, UrlPermission, AuthGuard, AnonymousGuardService,
+  providers: [AuthService, AccountService, UrlPermission, AuthGuard, AnonymousGuardService,SnackbarService,
     { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },  
     {
     provide: STEPPER_GLOBAL_OPTIONS,

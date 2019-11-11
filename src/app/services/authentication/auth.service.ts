@@ -31,7 +31,7 @@ export class AuthService {
 
     public logIn(user: User) {
         localStorage.clear();
-        return this.https.post(AppComponent.API_URL + '/authentication/login', user).pipe(
+        return this.https.post(AppComponent.API_URL + '/authentication/signin', user).pipe(
             map((response: any) => {
                 localStorage.setItem('Currentuser', user.username);
                 localStorage.setItem('Token', response.token);

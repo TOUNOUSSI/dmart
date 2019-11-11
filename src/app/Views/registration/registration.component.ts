@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user.model';
 import { AccountService } from 'src/app/services/account/account.service';
+import { SnackbarService } from 'src/app/services/notifications/toaster/snackbar.service';
 
 @Component({
   selector: 'gmart-registration',
@@ -14,11 +15,8 @@ export class RegistrationComponent implements OnInit {
   @Input() regForm2: FormGroup;
   user: User = new User();
   formSubmitted: Boolean = false
-  toastMessage: string = ""
-  alertType: string = "danger";
-  alertsDismiss: any = [];
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private toasterService: SnackbarService) { }
 
 
   ngOnInit() {
@@ -59,69 +57,17 @@ export class RegistrationComponent implements OnInit {
   register() {
     this.accountService.signup(this.user).then(
       res => {
-            console.log(JSON.stringify)
-            this.alertType = "success";
-            this.toastMessage = "User was successfully added!";
-            this.showMessage();
+        this.toasterService.message = "User '"+this.user.username+"' was successfully added!";
+        this.toasterService.open();
       }).catch(
-         err => {
-        this.alertType = "danger";
+        err => {
+          this.toasterService.message = err.error.error.message;
+          this.toasterService.open();
 
-        switch (err.status) {
-          case 400:
-            this.toastMessage = "Inputs are not corrects!";
-            this.showMessage();
-            break;
-          case 401:
-            this.toastMessage = "vous n'avez pas le droit d'accedé a cette resource!";
-            this.showMessage();
-            break;
-          case 404:
-            this.toastMessage = "The web service is not accessible!";
-            this.showMessage();
-            break;
-          case 500:
-            this.toastMessage = "An error has occurred in the server!";
-            this.showMessage();
-            break;
-
-          case 200:
-            this.alertType = "success";
-
-            this.toastMessage = "User was successfully added!";
-            this.showMessage();
-            break;
-          case 202:
-            this.alertType = "success";
-            this.toastMessage = "User was successfully added!";
-            this.showMessage();
-            break;
-
-          case 409:
-            this.toastMessage = "This user '" + this.user.email + "' has been already registred!";
-            this.showMessage();
-            break;
-
-          case 0:
-            this.toastMessage = "You are not allowed to access this resource!";
-            this.showMessage();
-            break;
-
-          default:
-            this.toastMessage = "The server does not allow access!";
-            this.showMessage();
-            break;
         }
-      }
-    )
+      )
   }
 
-  showMessage(): void {
-    this.alertsDismiss.push({
-      type: this.alertType,
-      msg: this.toastMessage,
-      timeout: 5000
-    });
-  }
+
 
 }

@@ -20,7 +20,6 @@ export class XhrInterceptor implements HttpInterceptor {
 
   //Redéfinition de la fonction intercept
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('XHR interceptor')
     try {
       let token = null;
       if (token != null) {
@@ -44,7 +43,6 @@ export class XhrInterceptor implements HttpInterceptor {
 
       return next.handle(request)
     } catch (error) {
-      console.log('ERROR in Interceptor')
       console.log(error)
     }
 

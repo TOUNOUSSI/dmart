@@ -7,9 +7,6 @@
 
         <mat-card-header>
             <mat-card-title>Sign up</mat-card-title>
-            <div *ngFor="let alert of alertsDismiss">
-                    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
-          </div>
         </mat-card-header>
 
         <mat-horizontal-stepper linear #stepper>
@@ -37,7 +34,8 @@
                     </mat-card-content>
 
                     <div>
-                        <button mat-button matStepperNext type="button"  class="btn btn-primary"  (submit)="submitStep1()">Next</button>
+                        <button mat-button matStepperNext type="button" class="btn btn-primary"
+                            (submit)="submitStep1()">Next</button>
                     </div>
                 </form>
             </mat-step>
@@ -63,7 +61,8 @@
                     </mat-card-content>
                     <div>
                         <button mat-button matStepperPrevious type="button" class="btn btn-primary">Back</button>
-                        <button mat-button matStepperNext type="button" class="btn btn-primary" (click)="submitStep2()">Next</button>
+                        <button mat-button matStepperNext type="button" class="btn btn-primary"
+                            (click)="submitStep2()">Next</button>
                     </div>
                 </form>
             </mat-step>
@@ -71,38 +70,39 @@
 
                 <mat-card-content>
                     <div *ngIf="formSubmitted">
-                       <table>
+                        <table>
                             <th></th>
                             <th></th>
                             <tbody>
-                                    <tr>
-                                            <td><b>Firstname</b> </td>
-                                            <td>{{user.firstname}}</td>
-                                     </tr>
-                                     <tr>
-                                            <td><b>Lastname</b></td>
-                                            <td>{{user.lastname}}</td>
-                                     </tr>
-                                     <tr>
-                                            <td><b>Username</b></td>
-                                            <td>{{user.username}}</td>
-                                     </tr>
-                                     <tr>
-                                            <td><b>Email</b></td>
-                                            <td>{{user.email}}</td>
-                                     </tr>
-                                     <tr>
-                                            <td><b>Phone</b></td>
-                                            <td>{{user.phone}}</td>
-                                     </tr>
+                                <tr>
+                                    <td><b>Firstname</b> </td>
+                                    <td>{{user.firstname}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Lastname</b></td>
+                                    <td>{{user.lastname}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Username</b></td>
+                                    <td>{{user.username}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Email</b></td>
+                                    <td>{{user.email}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Phone</b></td>
+                                    <td>{{user.phone}}</td>
+                                </tr>
                             </tbody>
-                           
-                       </table>
+
+                        </table>
                     </div>
                 </mat-card-content>
 
                 <button mat-button matStepperPrevious type="button" class="btn btn-primary">Back</button>
-                <button mat-button matStepperNext type="button" class="btn btn-primary" (click)="register()">Submit</button>
+                <button mat-button matStepperNext type="button" class="btn btn-primary"
+                    (click)="register()">Submit</button>
 
             </mat-step>
 
