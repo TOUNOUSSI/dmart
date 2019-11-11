@@ -40,6 +40,7 @@ export class AuthService {
                 this.router.navigate(['/dashboard']);
 
             }, (err) => {
+                console.log("Communication error : "+err.status)
                 console.log(err);
                 this.loggedIn$.next(false);
             })
@@ -89,17 +90,6 @@ export class AuthService {
             this.router.navigate(['/login']);
 
         }
-    }
-
-    validateCaptcha(data): Observable<any> {
-        return this.https.post(AppComponent.API_URL + '/account/validateCaptcha', data).pipe(
-
-            map((response: Response) => response.json()),
-            catchError((err => {
-                console.log('Handling error locally and rethrowing it...', err);
-                return throwError(err);
-            })),
-        );
     }
 
     public getToken(): string {

@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     try {
+        
                 localStorage.clear();
                 this.authService.logIn(this.user).subscribe(
                     result => {},

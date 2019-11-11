@@ -1,0 +1,112 @@
+<div class="signup-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+    <mat-card class="mat-card">
+        <ng-template matStepperIcon="edit">
+            <mat-icon>done</mat-icon>
+        </ng-template>
+
+        <mat-card-header>
+            <mat-card-title>Sign up</mat-card-title>
+            <div *ngFor="let alert of alertsDismiss">
+                    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+          </div>
+        </mat-card-header>
+
+        <mat-horizontal-stepper linear #stepper>
+            <mat-step label="Personal Details" state="home" [stepControl]="regForm1">
+
+                <form class="signup-form" [formGroup]="regForm1" (ngSubmit)="regFormInfo.form.valid"
+                    #regFormInfo="ngForm" novalidate>
+                    <mat-card-content>
+                        <mat-form-field class="signup-full-width">
+                            <input matInput type="text" name="firstname" id="firstname" placeholder="Firstname"
+                                formControlName="firstname" [(ngModel)]="user.firstname" required>
+                        </mat-form-field>
+                        <mat-form-field class="signup-full-width">
+                            <input matInput type="text" name="lastname" id="lastname" placeholder="Lastname"
+                                formControlName="lastname" [(ngModel)]="user.lastname" required>
+                        </mat-form-field>
+                        <mat-form-field class="signup-full-width">
+                            <input matInput type="email" name="email" id="email" placeholder="Email"
+                                formControlName="email" [(ngModel)]="user.email" required>
+                        </mat-form-field>
+                        <mat-form-field class="signup-full-width">
+                            <input matInput type="text" name="phone" id="phone" placeholder="Phone"
+                                formControlName="phone" [(ngModel)]="user.phone" required>
+                        </mat-form-field>
+                    </mat-card-content>
+
+                    <div>
+                        <button mat-button matStepperNext type="button"  class="btn btn-primary"  (submit)="submitStep1()">Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step label="Account Details" state="book" [stepControl]="regForm2">
+                <form class="signup-form" [formGroup]="regForm2" (ngSubmit)="regFormAccount.form.valid"
+                    #regFormAccount="ngForm" novalidate>
+                    <mat-card-content>
+                        <mat-form-field class="signup-full-width">
+                            <input matInput type="text" name="username" id="username" placeholder="Username"
+                                formControlName="username" [(ngModel)]="user.username" required>
+                        </mat-form-field>
+
+                        <mat-form-field class="signup-full-width">
+                            <input matInput type="password" name="password" id="password" placeholder="Password"
+                                formControlName="password" [(ngModel)]="user.password" required>
+                        </mat-form-field>
+                        <mat-form-field class="signup-full-width">
+                            <input matInput type="password" name="passwordconfirm" id="passwordconfirm"
+                                placeholder="Retype password " formControlName="passwordconfirm"
+                                [(ngModel)]="user.passwordconfirm" required>
+                        </mat-form-field>
+
+                    </mat-card-content>
+                    <div>
+                        <button mat-button matStepperPrevious type="button" class="btn btn-primary">Back</button>
+                        <button mat-button matStepperNext type="button" class="btn btn-primary" (click)="submitStep2()">Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step label="Summary" state="chat">
+
+                <mat-card-content>
+                    <div *ngIf="formSubmitted">
+                       <table>
+                            <th></th>
+                            <th></th>
+                            <tbody>
+                                    <tr>
+                                            <td><b>Firstname</b> </td>
+                                            <td>{{user.firstname}}</td>
+                                     </tr>
+                                     <tr>
+                                            <td><b>Lastname</b></td>
+                                            <td>{{user.lastname}}</td>
+                                     </tr>
+                                     <tr>
+                                            <td><b>Username</b></td>
+                                            <td>{{user.username}}</td>
+                                     </tr>
+                                     <tr>
+                                            <td><b>Email</b></td>
+                                            <td>{{user.email}}</td>
+                                     </tr>
+                                     <tr>
+                                            <td><b>Phone</b></td>
+                                            <td>{{user.phone}}</td>
+                                     </tr>
+                            </tbody>
+                           
+                       </table>
+                    </div>
+                </mat-card-content>
+
+                <button mat-button matStepperPrevious type="button" class="btn btn-primary">Back</button>
+                <button mat-button matStepperNext type="button" class="btn btn-primary" (click)="register()">Submit</button>
+
+            </mat-step>
+
+        </mat-horizontal-stepper>
+
+    </mat-card>
+</div>

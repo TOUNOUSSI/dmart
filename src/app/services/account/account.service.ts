@@ -20,11 +20,9 @@ export class AccountService {
       }))
     );
   }
-  createAccount(user: User) {
-    return this.https.post(AppComponent.API_URL + '/account/register', user)
-      .toPromise().then((response: Response) => response)
-      .catch(error => {
-      });
+  signup(user: User) {
+    return this.https.post(AppComponent.API_URL + '/authentication/signup', user)
+      .toPromise().then((response: Response) => response);
   }
 
   resetPassword(mail: string) {
