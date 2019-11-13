@@ -32,3 +32,12 @@ $DMART-theme: mat-light-theme($DMART-primary, $DMART-accent, $DMART-warn);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// If you want to override variables do it here
+@import "assets/scss/variables";
+
+// Import styles
+@import "assets/scss/core/coreui.scss";
+
+// If you want to add something do it here
+@import "assets/scss/custom";

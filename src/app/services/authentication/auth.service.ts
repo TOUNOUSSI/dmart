@@ -37,7 +37,7 @@ export class AuthService {
                 localStorage.setItem('Token', response.token);
                 this.loggedIn$.next(true);
                 this.tokn = response.accessToken;
-                this.router.navigate(['/dashboard']);
+                this.router.navigate(['/admin/dashboard']);
 
             }, (err) => {
                 console.log("Communication error : "+err.status)

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {CdkTableModule} from '@angular/cdk/table';
+import { CdkTableModule } from '@angular/cdk/table';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Views/login/login.component';
 import { SplashscreenComponent } from './views/splashscreen/splashscreen.component';
@@ -17,6 +17,21 @@ import { AuthGuard } from './services/url-permission/auth.guard';
 import { AnonymousGuardService } from './services/url-permission/anonymous-auth.guard';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegistrationComponent } from './views/registration/registration.component';
+import {  PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { XhrInterceptor } from './services/security/xhr.interceptor';
+import { SnackbarService } from './services/notifications/toaster/snackbar.service';
+import { AngularMaterialModule } from './angular-material.module';
+import { DefaultLayoutComponent } from './views/containers';
+import { AppAsideModule } from './views/core/aside';
+import { AppBreadcrumbModule } from './views/core/breadcrumb';
+import { AppHeaderModule } from './views/core/header';
+import { AppFooterModule } from './views/core/footer';
+import { AppSidebarModule } from './views/core/sidebar';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CommonModule } from '@angular/common';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -51,10 +66,6 @@ import {
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
-import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import { XhrInterceptor } from './services/security/xhr.interceptor';
-import { SnackbarService } from './services/notifications/toaster/snackbar.service';
-
 
 @NgModule({
   exports: [
@@ -95,33 +106,40 @@ import { SnackbarService } from './services/notifications/toaster/snackbar.servi
 })
 export class DemoMaterialModule {}
 
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SplashscreenComponent,
-    DashboardComponent,
-    RegistrationComponent],
+    RegistrationComponent,
+    DefaultLayoutComponent
+  ],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
+    DemoMaterialModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     FlexLayoutModule,
     HttpClientModule,
-    DemoMaterialModule,
-    AlertModule.forRoot(),
-    
+    AppAsideModule,
+    AppBreadcrumbModule,
+    AppHeaderModule,
+    AppFooterModule,
+    AppSidebarModule,
+    PerfectScrollbarModule,
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot()
 
   ],
-  providers: [AuthService, AccountService, UrlPermission, AuthGuard, AnonymousGuardService,SnackbarService,
-    { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },  
+  providers: [AuthService, AccountService, UrlPermission, AuthGuard, AnonymousGuardService, SnackbarService,
+    { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },
     {
-    provide: STEPPER_GLOBAL_OPTIONS,
-    useValue: { displayDefaultIndicatorType: false }
-  }],
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { displayDefaultIndicatorType: false }
+    }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
