@@ -4,11 +4,12 @@ import { AppComponent } from '../../app.component';
 import { BehaviorSubject } from 'rxjs';
 import { Router, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { stringify } from 'querystring';
 import { AccountService } from '../account/account.service';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import { of, throwError, from } from 'rxjs';
+import { SnackbarService } from '../notifications/toaster/snackbar.service';
 
 @Injectable()
 export class AuthService {
@@ -24,7 +25,7 @@ export class AuthService {
         return this.loggedIn$.asObservable(); // {2}
     }
 
-    constructor(private router: Router, public https: HttpClient, private accountservice: AccountService) {
+    constructor(private router: Router, public https: HttpClient,private toasterService: SnackbarService) {
 
     }
 
@@ -32,19 +33,19 @@ export class AuthService {
     public logIn(user: User) {
         localStorage.clear();
         return this.https.post(AppComponent.API_URL + '/authentication/signin', user).pipe(
-            map((response: any) => {
+            tap((response: any) => {
                 localStorage.setItem('Currentuser', user.username);
                 localStorage.setItem('Token', response.token);
                 this.loggedIn$.next(true);
                 this.tokn = response.accessToken;
                 this.router.navigate(['/admin/dashboard']);
 
-            }, (err) => {
-                console.log("Communication error : "+err.status)
-                console.log(err);
-                this.loggedIn$.next(false);
-            })
-        );
+            }),catchError((err: any) => {
+                this.toasterService.message = 'Cannot reach the server end-point'; 
+                this.toasterService.open();
+              return (err instanceof HttpErrorResponse)?   err.error: of(err);
+         }));
+        
     }
 
 

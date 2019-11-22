@@ -23,88 +23,14 @@ import { XhrInterceptor } from './services/security/xhr.interceptor';
 import { SnackbarService } from './services/notifications/toaster/snackbar.service';
 import { AngularMaterialModule } from './angular-material.module';
 import { DefaultLayoutComponent } from './views/containers';
-import { AppAsideModule } from './views/core/aside';
-import { AppBreadcrumbModule } from './views/core/breadcrumb';
-import { AppHeaderModule } from './views/core/header';
 import { AppFooterModule } from './views/core/footer';
-import { AppSidebarModule } from './views/core/sidebar';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CommonModule } from '@angular/common';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-
-import {
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatDividerModule,
-  MatExpansionModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatStepperModule,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatTooltipModule,
-} from '@angular/material';
-
-@NgModule({
-  exports: [
-    CdkTableModule,
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatStepperModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatDividerModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-  ]
-})
-export class DemoMaterialModule {}
+import { AppAsideModule } from './views/core/aside';
+import { AppHeaderModule } from './views/core/header';
+import { AppBreadcrumbModule } from './views/core/breadcrumb';
+import { AppSidebarModule } from './views/core/sidebar';
 
 @NgModule({
   declarations: [
@@ -112,26 +38,27 @@ export class DemoMaterialModule {}
     LoginComponent,
     SplashscreenComponent,
     RegistrationComponent,
-    DefaultLayoutComponent
+    DefaultLayoutComponent,
+    
   ],
   imports: [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
-    DemoMaterialModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     FlexLayoutModule,
     HttpClientModule,
-    AppAsideModule,
-    AppBreadcrumbModule,
-    AppHeaderModule,
-    AppFooterModule,
-    AppSidebarModule,
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    AngularMaterialModule,
+    AppFooterModule,
+    AppAsideModule,
+    AppHeaderModule,
+    AppBreadcrumbModule,
+    AppSidebarModule,
 
   ],
   providers: [AuthService, AccountService, UrlPermission, AuthGuard, AnonymousGuardService, SnackbarService,
