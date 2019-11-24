@@ -47,4 +47,5 @@ export interface INavData {
   label?: INavLabel;
   wrapper?: INavWrapper;
   linkProps?: INavLinkProps;
+  event?:string | any
 }

@@ -16,6 +16,7 @@ import { AdminRoutingModule } from './admin-routing.module';
     declarations: [
      DashboardComponent,
     ],
+    entryComponents:[]
         
     })
     

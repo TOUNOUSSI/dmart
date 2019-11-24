@@ -11,12 +11,30 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Data source',
-    url: '/config',
-    icon: 'icon-speedometer',
+    url: '/datasource',
+    icon: ' fa fa-database',
     badge: {
       variant: 'success',
       text: 'NEW'
-    }
+    },
+   
+    
+    children: [
+      {
+        name: 'Configuration',
+        url: '/datasource',
+        icon: 'icon-puzzle',
+        event:{
+          name :'click',
+          body :'dataSourceDialog'
+        }
+      },
+      {
+        name: 'explore',
+        url: '/datasource/explore',
+        icon: 'icon-puzzle',
+      },
+    ]
   },
   {
     name: 'Base',
@@ -99,6 +117,7 @@ export const navItems: INavData[] = [
 
 
 import {QueryParamsHandling} from '@angular/router';
+import { Optional, HostListener } from '@angular/core';
 
 export interface INavAttributes {
   [propName: string]: any;
@@ -147,21 +166,6 @@ export interface INavData {
   label?: INavLabel;
   wrapper?: INavWrapper;
   linkProps?: INavLinkProps;
-}
+  event? : any;
 
-export interface INavData {
-  name?: string;
-  url?: string | any[];
-  href?: string;
-  icon?: string;
-  badge?: INavBadge;
-  title?: boolean;
-  children?: INavData[];
-  variant?: string;
-  attributes?: INavAttributes;
-  divider?: boolean;
-  class?: string;
-  label?: INavLabel;
-  wrapper?: INavWrapper;
-  linkProps?: INavLinkProps;
 }

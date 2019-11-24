@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { CdkTableModule } from '@angular/cdk/table';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Views/login/login.component';
@@ -18,7 +18,7 @@ import { AnonymousGuardService } from './services/url-permission/anonymous-auth.
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegistrationComponent } from './views/registration/registration.component';
 import {  PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { STEPPER_GLOBAL_OPTIONS, CdkStepper } from '@angular/cdk/stepper';
 import { XhrInterceptor } from './services/security/xhr.interceptor';
 import { SnackbarService } from './services/notifications/toaster/snackbar.service';
 import { AngularMaterialModule } from './angular-material.module';
@@ -31,6 +31,8 @@ import { AppAsideModule } from './views/core/aside';
 import { AppHeaderModule } from './views/core/header';
 import { AppBreadcrumbModule } from './views/core/breadcrumb';
 import { AppSidebarModule } from './views/core/sidebar';
+import { DatasourceComponent } from './views/datasource/config/ds-config/ds-config.component';
+import { MatStepperNext, MatStepperPrevious, MatRipple } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import { AppSidebarModule } from './views/core/sidebar';
     SplashscreenComponent,
     RegistrationComponent,
     DefaultLayoutComponent,
-    
+    DatasourceComponent
   ],
   imports: [
     CommonModule,
@@ -61,6 +63,8 @@ import { AppSidebarModule } from './views/core/sidebar';
     AppSidebarModule,
 
   ],
+  entryComponents: [DatasourceComponent],
+
   providers: [AuthService, AccountService, UrlPermission, AuthGuard, AnonymousGuardService, SnackbarService,
     { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },
     {

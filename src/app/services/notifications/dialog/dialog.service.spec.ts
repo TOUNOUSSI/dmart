@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SnackbarService } from './snackbar.service';
+import { DialogService } from './dialog.service';
 
-describe('SnackbarService', () => {
+describe('DialogService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SnackbarService = TestBed.get(SnackbarService);
+    const service: DialogService = TestBed.get(DialogService);
     expect(service).toBeTruthy();
   });
 });

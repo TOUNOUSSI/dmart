@@ -1,0 +1,7 @@
+<span (click) = "execute()"  [appHtmlAttr]="item.attributes" class="nav-link">
+    
+  <i *ngIf="helper.hasIcon(item)" class="nav-icon icon-settings"></i>
+  <ng-container>{{item.name}}</ng-container>
+  <span *ngIf="helper.hasBadge(item)" [ngClass]="item | appSidebarNavBadge">{{ item.badge.text }}</span>
+
+</span>

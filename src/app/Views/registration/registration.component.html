@@ -25,7 +25,14 @@
                         </mat-form-field>
                         <mat-form-field class="signup-full-width">
                             <input matInput type="email" name="email" id="email" placeholder="Email"
-                                formControlName="email" [(ngModel)]="user.email" required>
+                                formControlName="email" [(ngModel)]="user.email"   [errorStateMatcher]="matcher" required>
+                            <mat-error
+                                *ngIf="regForm1.hasError('email') && !regForm1.hasError('required')">
+                                Please enter a valid email address
+                            </mat-error>
+                            <mat-error *ngIf="regForm1.hasError('required')">
+                                Email is <strong>required</strong>
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field class="signup-full-width">
                             <input matInput type="text" name="phone" id="phone" placeholder="Phone"

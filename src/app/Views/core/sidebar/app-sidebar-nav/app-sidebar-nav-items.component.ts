@@ -39,6 +39,13 @@ import {INavData} from '../app-sidebar-nav';
         <ng-container
           *ngSwitchCase="'empty'">
         </ng-container>
+        <app-sidebar-nav-event 
+        [item]="item"
+        class="nav-item"
+        [ngClass]="item | appSidebarNavItemClass"
+        *ngSwitchCase="'event'" 
+         >
+        </app-sidebar-nav-event>
         <app-sidebar-nav-link
           *ngSwitchDefault
           [item]="item"

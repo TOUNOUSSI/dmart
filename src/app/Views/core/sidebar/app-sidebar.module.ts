@@ -25,13 +25,17 @@ import { AppSidebarNavIconPipe } from './app-sidebar-nav/app-sidebar-nav-icon.pi
 import { AppSidebarNavBadgePipe } from './app-sidebar-nav/app-sidebar-nav-badge.pipe';
 import { AppSidebarNavLinkPipe } from './app-sidebar-nav/app-sidebar-nav-link.pipe';
 import { AppSidebarNavItemClassPipe } from './app-sidebar-nav/app-sidebar-nav-item-class.pipe';
-
+import { AppSidebarNavEventPipe } from './app-sidebar-nav/app-sidebar-nav-event.pipe';
+import { AppSidebarNavEventComponent } from './app-sidebar-nav/app-sidebar-nav-event.component';
+import { AngularMaterialModule } from 'src/app/angular-material.module';
+ 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    LayoutModule
-  ],
+    LayoutModule,
+    AngularMaterialModule
+    ],
   exports: [
     AppSidebarFooterComponent,
     AppSidebarFormComponent,
@@ -45,10 +49,11 @@ import { AppSidebarNavItemClassPipe } from './app-sidebar-nav/app-sidebar-nav-it
     AppSidebarNavLinkComponent,
     AppSidebarNavLinkContentComponent,
     AppSidebarNavTitleComponent,
+    AppSidebarNavEventComponent,
     NavDropdownDirective,
     NavDropdownToggleDirective,
     LayoutModule
-  ],
+    ],
   declarations: [
     AppSidebarFooterComponent,
     AppSidebarFormComponent,
@@ -69,8 +74,11 @@ import { AppSidebarNavItemClassPipe } from './app-sidebar-nav/app-sidebar-nav-it
     AppSidebarNavIconPipe,
     AppSidebarNavBadgePipe,
     AppSidebarNavLinkPipe,
-    AppSidebarNavItemClassPipe
+    AppSidebarNavItemClassPipe,
+    AppSidebarNavEventComponent,
+    AppSidebarNavEventPipe
   ],
+
   providers: [
     SidebarNavHelper,
     AppSidebarService

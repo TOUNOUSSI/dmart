@@ -22,10 +22,13 @@ export class SidebarNavHelper {
       return 'dropdown';
     } else if (item.label) {
       return 'label';
-    } else if (!Object.keys(item).length) {
-      return 'empty';
-    } else {
+    } else if (item.event) {
+      return 'event';
+    } else if(item.url)
+    {
       return 'link';
+    }else{
+      return 'empty';
     }
   }
 
@@ -35,7 +38,8 @@ export class SidebarNavHelper {
 
   public hasBadge = (item) => Boolean(item.badge);
   public hasIcon = (item) => Boolean(item.icon);
-
+  public hasEvent = (item) => Boolean(item.event);
+  
   public getIconClass(item) {
     const classes = {
       'nav-icon': true

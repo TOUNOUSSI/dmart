@@ -1,0 +1,107 @@
+<h2 mat-dialog-title>Data source configuration wizard</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-card>
+    <ng-template matStepperIcon="edit">
+      <mat-icon>done</mat-icon>
+    </ng-template>
+
+    <mat-horizontal-stepper linear #stepper>
+      <mat-step label="Data source type" state="home" [stepControl]="regForm1">
+        <br><br>
+        <form class="signup-form" [formGroup]="regForm1" (ngSubmit)="regFormInfo.form.valid" #regFormInfo="ngForm"
+          novalidate>
+          <mat-card-content>
+            <mat-list class="list-horizontal">
+              <li class="custombutton" id="database" (click)='listClick("database") '>
+                <mat-list-item>
+                  <i class="mat-icon fa fa-database"></i> 
+                </mat-list-item>
+              </li>
+              &nbsp; &nbsp;
+              <li class="custombutton" id="file" (click)='listClick("file") '>
+                <mat-list-item>
+                  <i class="mat-icon fa fa-file"></i> 
+                </mat-list-item>
+              </li>
+
+            </mat-list>
+          </mat-card-content>
+
+          <div>
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button mat-button matStepperNext type="button" class="btn btn-primary"
+              (submit)="submitStep1()">Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step label="Database Details" state="book" [stepControl]="regForm2">
+        <form class="signup-form" [formGroup]="regForm2" (ngSubmit)="regFormAccount.form.valid" #regFormAccount="ngForm"
+          novalidate>
+          <mat-card-content>
+            <mat-form-field class="signup-full-width">
+              <input matInput type="text" name="username" id="username" placeholder="Username"
+                formControlName="username" [(ngModel)]="user.username" required>
+            </mat-form-field>
+
+            <mat-form-field class="signup-full-width">
+              <input matInput type="password" name="password" id="password" placeholder="Password"
+                formControlName="password" [(ngModel)]="user.password" required>
+            </mat-form-field>
+            <mat-form-field class="signup-full-width">
+              <input matInput type="password" name="passwordconfirm" id="passwordconfirm" placeholder="Retype password "
+                formControlName="passwordconfirm" [(ngModel)]="user.passwordconfirm" required>
+            </mat-form-field>
+
+          </mat-card-content>
+          <div>
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button mat-button matStepperPrevious type="button" class="btn btn-primary">Back</button>
+            <button mat-button matStepperNext type="button" class="btn btn-primary"
+              (click)="submitStep2()">Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step label="Summary" state="chat">
+
+        <mat-card-content>
+          <div *ngIf="formSubmitted">
+            <table>
+              <th></th>
+              <th></th>
+              <tbody>
+                <tr>
+                  <td><b>Firstname</b> </td>
+                  <td>{{user.firstname}}</td>
+                </tr>
+                <tr>
+                  <td><b>Lastname</b></td>
+                  <td>{{user.lastname}}</td>
+                </tr>
+                <tr>
+                  <td><b>Username</b></td>
+                  <td>{{user.username}}</td>
+                </tr>
+                <tr>
+                  <td><b>Email</b></td>
+                  <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                  <td><b>Phone</b></td>
+                  <td>{{user.phone}}</td>
+                </tr>
+              </tbody>
+
+            </table>
+          </div>
+        </mat-card-content>
+        <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+        <button mat-button matStepperPrevious type="button" class="btn btn-primary">Back</button>
+        <button mat-button matStepperNext mat-dialog-close type="button" class="btn btn-primary"
+          (click)="register()">Submit</button>
+
+      </mat-step>
+
+    </mat-horizontal-stepper>
+
+  </mat-card>
+</mat-dialog-content>

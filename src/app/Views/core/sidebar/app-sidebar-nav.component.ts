@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, HostBinding, Input, OnChanges, SimpleChanges, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { INavData } from './app-sidebar-nav';
@@ -12,7 +12,7 @@ export class AppSidebarNavComponent implements OnChanges {
 
   @HostBinding('class.sidebar-nav') _sidebarBav = true;
   @HostBinding('attr.role') @Input() role = 'nav';
-
+ 
   public navItemsArray: INavData[] = [];
 
   constructor(

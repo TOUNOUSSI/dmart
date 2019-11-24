@@ -48,4 +48,8 @@ export class DefaultLayoutComponent implements OnInit {
     }
   }
 
+  openDatasourceDialog(){
+    console.log('Open dialog called')
+  }
+
 }
