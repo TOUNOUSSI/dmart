@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/authentication/auth.service';
 import {User} from '../../models/user.model';
-import { Router, ActivatedRoute } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 import { SnackbarService } from 'src/app/services/notifications/toaster/snackbar.service';
 
 @Component({

@@ -3,7 +3,6 @@ import { SidebarNavHelper } from '../app-sidebar-nav.service';
 import { EventEmitter } from 'events';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 import { DialogService } from 'src/app/services/notifications/dialog/dialog.service';
-import { DatasourceComponent } from '../../../datasource/config/ds-config/ds-config.component';
 
 @Component({
     selector: 'app-sidebar-nav-event',
@@ -42,7 +41,6 @@ export class AppSidebarNavEventComponent implements OnInit {
                 const dialogConfig = new MatDialogConfig()
                 dialogConfig.disableClose = true;
                 dialogConfig.autoFocus = true;
-               this.dialogService.dialog.open(DatasourceComponent, dialogConfig);
 
                 break;
             }

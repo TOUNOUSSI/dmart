@@ -26,6 +26,7 @@
     "@angular/router": "^8.2.14",
     "@coreui/icons": "0.3.0",
     "bootstrap": "^4.4.1",
+    "caniuse-lite": "^1.0.30001021",
     "compass-mixins": "^0.12.10",
     "flag-icon-css": "^3.4.5",
     "font-awesome": "^4.7.0",

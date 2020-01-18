@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { User } from 'src/app/models/user.model';
 import { AccountService } from 'src/app/services/account/account.service';
 import { SnackbarService } from 'src/app/services/notifications/toaster/snackbar.service';
@@ -21,6 +21,7 @@ export class RegistrationComponent implements OnInit, ErrorStateMatcher {
   @Input() regForm2: FormGroup;
   user: User = new User();
   formSubmitted: Boolean = false
+  matcher = new MyErrorStateMatcher();
 
   constructor(private accountService: AccountService, private toasterService: SnackbarService) { }
 
@@ -76,4 +77,12 @@ export class RegistrationComponent implements OnInit, ErrorStateMatcher {
 
 
 
+}
+
+/** Error when invalid control is dirty, touched, or submitted. */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
 }
