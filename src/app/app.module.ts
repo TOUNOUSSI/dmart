@@ -33,6 +33,9 @@ import { AppBreadcrumbModule } from './views/core/breadcrumb';
 import { AppSidebarModule } from './views/core/sidebar';
 import { DatasourceComponent } from './views/datasource/config/ds-config/ds-config.component';
 import { MatStepperNext, MatStepperPrevious, MatRipple } from '@angular/material';
+import { WebSocketAPI } from './websocket-api';
+import { ChatModule } from './views/chat';
+import { FriendsModule } from './views/friends';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,8 @@ import { MatStepperNext, MatStepperPrevious, MatRipple } from '@angular/material
     SplashscreenComponent,
     RegistrationComponent,
     DefaultLayoutComponent,
-    DatasourceComponent
+    DatasourceComponent,
+
   ],
   imports: [
     CommonModule,
@@ -61,11 +65,11 @@ import { MatStepperNext, MatStepperPrevious, MatRipple } from '@angular/material
     AppHeaderModule,
     AppBreadcrumbModule,
     AppSidebarModule,
-
+    FriendsModule
   ],
   entryComponents: [DatasourceComponent],
 
-  providers: [AuthService, AccountService, UrlPermission, AuthGuard, AnonymousGuardService, SnackbarService,
+  providers: [WebSocketAPI, AuthService, AccountService, UrlPermission, AuthGuard, AnonymousGuardService, SnackbarService,
     { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },
     {
       provide: STEPPER_GLOBAL_OPTIONS,

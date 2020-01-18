@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { SnackbarService } from 'src/app/services/notifications/toaster/snackbar.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { User } from 'src/app/models/user.model';
+import { Datasource } from 'src/app/models/datasource.model';
+import { DsService } from 'src/app/services/ds/ds.service';
 
 @Component({
   selector: 'dmart-ds-config',
@@ -13,23 +15,30 @@ export class DatasourceComponent implements OnInit {
 
   @Input() regForm1: FormGroup;
   @Input() regForm2: FormGroup;
-  user: User = new User();
+  datasource: Datasource = new Datasource();
   formSubmitted: Boolean = false
   selectedItem : string = 'database';
 
-  constructor(private accountService: AccountService, private toasterService: SnackbarService) { }
+  constructor(private datasourceService: DsService, private toasterService: SnackbarService,private formBuilder: FormBuilder) { }
 
-
+ 
   ngOnInit() {
-
-    this.regForm1 = new FormGroup({
+    this.regForm1 =  this.formBuilder.group({
       database: new FormControl(),
      });
-    this.regForm2 = new FormGroup({
+    this.regForm2  =  this.formBuilder.group({
+      url : new FormControl(),
       username: new FormControl('', [Validators.pattern(/^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/)]),
       password: new FormControl(),
-      passwordconfirm: new FormControl()
+      port: new FormControl()
 
+    });
+
+    this.regForm2.patchValue({
+      url: 'Nancy',
+      username:'Nancy',
+      password: 'Nancy',
+      port : 'Nancy'
     });
   }
 
@@ -39,7 +48,6 @@ export class DatasourceComponent implements OnInit {
       case 'database':
         document.getElementById('database').className = 'active'
         document.getElementById('file').className = 'custombutton'
-
         break;
     
       default:
@@ -67,10 +75,11 @@ export class DatasourceComponent implements OnInit {
     this.formSubmitted = true;
   }
 
-  register() {
-    this.accountService.signup(this.user).then(
+  testConnection() {
+    this.datasourceService.testConnection(this.datasource).then(
       res => {
-        this.toasterService.message = "User '"+this.user.username+"' was successfully added!";
+        console.log('is WS test has been passed ? =>  '+ res)
+        this.toasterService.message = "Datasource '"+this.datasource.username+"' was successfully connected!";
         this.toasterService.open();
       }).catch(
         err => {
@@ -80,5 +89,12 @@ export class DatasourceComponent implements OnInit {
         }
       )
   }
+
+  private onDatasourceFormValueChange(data) {
+    this.datasource.url = data.url
+    this.datasource.username = data.username
+    this.datasource.password = data.password
+    this.datasource.port = data.port
+}
 
 }

@@ -6,12 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  static API_URL = 'http://localhost:8087/gmartws';
+  static API_URL = 'http://localhost:8088/communicatorws';
+ // communicatorws/api/gmartws/api/authenticate
 
   title = 'DMART';
-
-  // To close the electron app
-  exit() {
+   // To close the electron app
+   exit() {
     window.close();
   }
 }

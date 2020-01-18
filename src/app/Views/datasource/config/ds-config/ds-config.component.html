@@ -14,13 +14,13 @@
             <mat-list class="list-horizontal">
               <li class="custombutton" id="database" (click)='listClick("database") '>
                 <mat-list-item>
-                  <i class="mat-icon fa fa-database"></i> 
+                  <i class="mat-icon fa fa-database"></i>
                 </mat-list-item>
               </li>
               &nbsp; &nbsp;
               <li class="custombutton" id="file" (click)='listClick("file") '>
                 <mat-list-item>
-                  <i class="mat-icon fa fa-file"></i> 
+                  <i class="mat-icon fa fa-file"></i>
                 </mat-list-item>
               </li>
 
@@ -39,19 +39,22 @@
           novalidate>
           <mat-card-content>
             <mat-form-field class="signup-full-width">
-              <input matInput type="text" name="username" id="username" placeholder="Username"
-                formControlName="username" [(ngModel)]="user.username" required>
+              <input matInput type="text" name="url" id="url" placeholder="Url" formControlName="url" required>
             </mat-form-field>
-
+            <mat-form-field class="signup-full-width">
+              <input matInput type="text" name="username" id="username" placeholder="Username"
+                formControlName="username" required>
+            </mat-form-field>
             <mat-form-field class="signup-full-width">
               <input matInput type="password" name="password" id="password" placeholder="Password"
-                formControlName="password" [(ngModel)]="user.password" required>
+                formControlName="password" required>
             </mat-form-field>
             <mat-form-field class="signup-full-width">
-              <input matInput type="password" name="passwordconfirm" id="passwordconfirm" placeholder="Retype password "
-                formControlName="passwordconfirm" [(ngModel)]="user.passwordconfirm" required>
+              <input matInput type="text" name="port" id="port" placeholder="Port " formControlName="port"  required>
             </mat-form-field>
-
+            <p>
+              Value: {{ datasource.url }}
+            </p>
           </mat-card-content>
           <div>
             <button mat-button mat-dialog-close>Cancel</button>

@@ -39,3 +39,7 @@ mat-toolbar{
 .white-icon svg {
     fill: white;
 }
+
+.col-lg-10 {
+    width: 700px;
+}

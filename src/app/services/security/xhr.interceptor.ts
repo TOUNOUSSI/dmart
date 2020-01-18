@@ -21,13 +21,15 @@ export class XhrInterceptor implements HttpInterceptor {
   //Redéfinition de la fonction intercept
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     try {
-      let token = null;
+      console.log("interceptor called")
+      let token = this.auth.getToken() as string;
       if (token != null) {
         request = request.clone({
           setHeaders: {
             'Content-type': 'application/json',
-            Authorization: 'GMART_AUTHORIZATION',
-            Token: token
+            Authorization: 'GMART_AUTHORIZATION '+token,
+            Token: token,
+            "Access-Control-Allow-Origin":  "http://localhost:4200"
                     }
         });
       } else {

@@ -32,7 +32,7 @@ export class AuthService {
 
     public logIn(user: User) {
         localStorage.clear();
-        return this.https.post(AppComponent.API_URL + '/authentication/signin', user).pipe(
+        return this.https.post(AppComponent.API_URL + '/gmartws-api/authenticate', user).pipe(
             tap((response: any) => {
                 localStorage.setItem('Currentuser', user.username);
                 localStorage.setItem('Token', response.token);
@@ -41,7 +41,35 @@ export class AuthService {
                 this.router.navigate(['/admin/dashboard']);
 
             }),catchError((err: any) => {
-                this.toasterService.message = 'Cannot reach the server end-point'; 
+                if(err instanceof HttpErrorResponse){
+                    switch(err.status){
+                        case 404:{
+                            this.toasterService.message = "Impossible de se connecter au serveur"; 
+                            break;
+                        } 
+                        case 404:{
+                            this.toasterService.message = "Vous avez pas le droit d'accèder à cette ressource"; 
+                            break;
+                        }
+                        case 402:{
+                            this.toasterService.message = 'Identifiant ou mot de passe incorrect'; 
+                            break;
+                        }
+                        case 405:{
+                            this.toasterService.message = 'Identifiant ou mot de passe incorrect'; 
+                            break;
+                        }
+                        default:{
+                            this.toasterService.message = 'Identifiant ou mot de passe incorrect'; 
+                            break;
+                        }
+                    }
+                }else{
+                    this.toasterService.message = 'Impossible de se connecter au serveur'; 
+     
+                }
+               
+                
                 this.toasterService.open();
               return (err instanceof HttpErrorResponse)?   err.error: of(err);
          }));
