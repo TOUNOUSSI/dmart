@@ -1,13 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './Views/login/login.component';
-import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
-import { RegistrationComponent } from './views/registration/registration.component';
-import { AppComponent } from './app.component';
 import { DefaultLayoutComponent } from './views/containers';
-import { UrlPermission } from './services/url-permission/url.permission';
-import { AnonymousGuardService } from './services/url-permission/anonymous-auth.guard';
-import { AuthGuard } from './services/url-permission/auth.guard';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'signin' },

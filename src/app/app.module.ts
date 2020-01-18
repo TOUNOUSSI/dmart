@@ -3,20 +3,17 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, ElementRef } from 
 import { CdkTableModule } from '@angular/cdk/table';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Views/login/login.component';
-import { SplashscreenComponent } from './views/splashscreen/splashscreen.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
 import { AuthService } from './services/authentication/auth.service';
 import { AccountService } from './services/account/account.service';
 import { UrlPermission } from './services/url-permission/url.permission';
 import { AuthGuard } from './services/url-permission/auth.guard';
 import { AnonymousGuardService } from './services/url-permission/anonymous-auth.guard';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RegistrationComponent } from './views/registration/registration.component';
 import {  PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { STEPPER_GLOBAL_OPTIONS, CdkStepper } from '@angular/cdk/stepper';
 import { XhrInterceptor } from './services/security/xhr.interceptor';
@@ -36,12 +33,12 @@ import { MatStepperNext, MatStepperPrevious, MatRipple } from '@angular/material
 import { WebSocketAPI } from './websocket-api';
 import { ChatModule } from './views/chat';
 import { FriendsModule } from './views/friends';
+import { RegistrationComponent } from './views/registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SplashscreenComponent,
     RegistrationComponent,
     DefaultLayoutComponent,
     DatasourceComponent,
