@@ -15,7 +15,7 @@ const rand = max => Math.floor(Math.random() * max)
 })
 export class ChatWidgetComponent implements OnInit {
   private stompClient;
-  private serverUrl = 'http://localhost:9081/kafkka/api'
+  private serverUrl = 'http://gmart-ws-chat.herokuapp.com/kafkka/api'
   private receivedMessage: string = '';
   @ViewChild('bottom', null) bottom: ElementRef
   @Input() public theme: 'blue' | 'grey' | 'red' = 'blue'
