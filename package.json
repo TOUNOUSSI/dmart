@@ -2,6 +2,7 @@
   "name": "dmart",
   "version": "0.0.0",
   "license": "MIT",
+  "description": "Data Monitoring And Reporting Tool Application",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
@@ -10,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron": "ng build && electron .",
-    "heroku-postbuild": "ng build --prod"
+    "postinstall": "ng build --prod --aot"
 
   },
    "private": true,
