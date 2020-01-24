@@ -21,7 +21,7 @@ export class AccountService {
     );
   }
   signup(user: User) {
-    return this.https.post(AppComponent.API_URL + '/authentication/register', user)
+    return this.https.post(AppComponent.API_URL + '/gmartws-api/register', user)
       .toPromise().then((response: Response) => response);
   }
 
