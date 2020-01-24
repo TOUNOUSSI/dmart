@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class WebSocketAPI {
-  webSocketEndPoint: string = 'http://localhost:9091/kafka/ws';
+  webSocketEndPoint: string = 'https://localhost:9091/kafka/ws';
     topic: string = "/topic/greetings";
     stompClient: any;
     public message :any;
