@@ -68,7 +68,9 @@ export class RegistrationComponent implements OnInit, ErrorStateMatcher {
         this.toasterService.open();
       }).catch(
         err => {
-          this.toasterService.message = err.error.error.message;
+          
+          let splitted =  err.error.error.message.split(/:(.+)/)[1];
+          this.toasterService.message = JSON.parse(splitted)[0].error.message
           this.toasterService.open();
 
         }
