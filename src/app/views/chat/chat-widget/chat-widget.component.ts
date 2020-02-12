@@ -16,7 +16,7 @@ const rand = max => Math.floor(Math.random() * max)
 })
 export class ChatWidgetComponent implements OnInit {
   private stompClient;
-  private _id:string='';
+  public _id:string='';
   private serverUrl = 'http://localhost:9091/gmart-chat-ws/gmart-chat-ws'
   private receivedMessage: string = '';
   elRef: ElementRef;
