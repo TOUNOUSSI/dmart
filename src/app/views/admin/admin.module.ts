@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ChatModule } from '../chat';
 import { FriendsModule } from '../friends';
+import { ChatInjectorService } from 'src/app/services/chat-injector/chat-injector.service';
 @NgModule({
     imports: [
     CommonModule,
@@ -20,6 +21,7 @@ import { FriendsModule } from '../friends';
      DashboardComponent,
     ],
     entryComponents:[]
+    ,providers:[ChatInjectorService]
         
     })
     

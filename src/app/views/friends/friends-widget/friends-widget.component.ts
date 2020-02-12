@@ -1,9 +1,12 @@
-import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core'
+import { Component, ElementRef, HostListener, Input, OnInit, ViewChild, ComponentFactoryResolver, ViewContainerRef } from '@angular/core'
 import { Subject } from 'rxjs'
 import { fadeIn, fadeInOut } from '../animations'
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { MessengerService } from 'src/app/services/messenger/messenger.service';
+import { ChatInjectorService } from 'src/app/services/chat-injector/chat-injector.service';
+import { ChatWidgetComponent } from '../../chat';
+import { User } from 'src/app/models/user.model';
 
 
 const rand = max => Math.floor(Math.random() * max)
@@ -11,10 +14,11 @@ const rand = max => Math.floor(Math.random() * max)
 @Component({
   selector: 'friends-widget',
   templateUrl: './friends-widget.component.html',
-  styleUrls: ['./friends-widget.component.css'],
+  styleUrls: ['./friends-widget.component.scss'],
   animations: [fadeInOut, fadeIn],
 })
 export class FriendsWidgetComponent implements OnInit {
+  @ViewChild('chatFirstWidget', { read: ViewContainerRef, static: false }) firstChatWidget: ViewContainerRef;
 
   @ViewChild('bottom', null) bottom: ElementRef
   @Input() public theme: 'blue' | 'grey' | 'red' = 'blue'
@@ -37,7 +41,7 @@ export class FriendsWidgetComponent implements OnInit {
     }
   }
 
-  constructor(private messengerService:MessengerService) {
+  constructor(private messengerService:MessengerService, private chatInjectorService:ChatInjectorService,private componentFactoryResolver: ComponentFactoryResolver) {
   }
 
   public focus = new Subject()
@@ -94,5 +98,14 @@ export class FriendsWidgetComponent implements OnInit {
       this.toggleFriends()
     }
   }
+
+
+  openNewChat(i){
+    console.log('Open chat box for user :'+this.users[i].username)
+    const factory = this.componentFactoryResolver.resolveComponentFactory(ChatWidgetComponent);
+    let componentRef =  this.firstChatWidget.createComponent(factory);
+    componentRef.instance.operator.name = this.users[i].firstname+' '+this.users[i].lastname;
+   //componentRef.instance.someObservableOrEventEmitter.subscribe(data => this.prop = data);
+       }
 
 }

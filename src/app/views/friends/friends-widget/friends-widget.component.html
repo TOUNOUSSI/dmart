@@ -7,7 +7,6 @@
           <span class="operator-status-online">●</span>
           <span class="friends-button-header" *ngIf="visible" (click)="toggleFriends()">✕</span>
         </div>
-        <friends-avatar [image]="operator.avatar"></friends-avatar>
         <h3 class="operator-name">
           {{operator.name}}
         </h3>
@@ -15,7 +14,7 @@
     </div>
     <div class="friends-box-main">
       <div class="friends-message-bottom" #bottom></div>
-      <ng-container *ngFor='let user of users'>
+      <ng-container *ngFor='let user of users; let i = index' [attr.data-index]="i">
         <div class="friends-message" >
           <div>
             <div class=" mr-3 float-left" style="display: inline-block;">
@@ -25,7 +24,7 @@
               </div>
             </div>
           </div>
-          <div class="text-truncate font-weight-bold">{{user.firstname}} {{user.lastname}}</div>
+          <div class="text-truncate font-weight-bold" (click)='openNewChat(i)'>{{user.firstname}} {{user.lastname}}</div>
 
           <div class="friends-message-date">
             <!-- {{message.date | date: 'short'}} -->
@@ -42,3 +41,7 @@
     <span [@fadeIn]> {{operator.name}}</span>
   </button>
 </div>
+<aside   class="ml4 chat-widget-ul " id="listOfChatWidgets" >
+  <ng-template #chatFirstWidget></ng-template>
+
+</aside>

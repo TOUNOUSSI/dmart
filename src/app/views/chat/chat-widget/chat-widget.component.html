@@ -1,6 +1,6 @@
-<div class="wrapper {{theme}}">
-  <div class="chat-box" *ngIf="visible" [@fadeInOut]="visible">
-    <div class="chat-box-header" (click)="toggleChat()">
+<div class="ml4 chat-widget-li    {{theme}}" >
+  <div class="chat-box display-flex flex-column" id="{{_id}}" *ngIf="visible" [@fadeInOut]="visible">
+    <div class="chat-box-header" (click)="closeChat()">
       <div class="">
 
         <div class="operator-status" >
@@ -12,7 +12,6 @@
         <h3 class="operator-name">
           {{operator.name}}
         </h3>
-   
 
        
       </div>
@@ -44,3 +43,4 @@
     <span [@fadeIn] > {{operator.name}}</span>
   </button>
 </div>
+

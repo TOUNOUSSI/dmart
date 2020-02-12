@@ -265,3 +265,20 @@ Sent message style
     height: 80vh;
   }
 }
+
+
+.chat-widget-ul{
+  /* list-style-type: none; */
+   margin: 3px;
+  /* padding: 0; */
+  /* overflow: hidden; */
+  display: -webkit-box;
+  display: flex;
+  /* position: relative; */
+  right: 280px;
+  bottom: 0;
+  /* right: auto; */
+  position: fixed;
+  top: auto;
+  /* float: right; */
+}

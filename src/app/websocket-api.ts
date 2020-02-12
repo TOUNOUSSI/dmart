@@ -2,27 +2,35 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { OnInit } from '@angular/core';
 
 @Injectable()
 export class WebSocketAPI {
-  webSocketEndPoint: string = 'https://localhost:9091/kafka/ws';
-    topic: string = "/topic/greetings";
+  webSocketEndPoint: string = 'https://localhost:9091/gmart-chat-ws/gmart-chat-ws';
+    topic: string = "/topic/public-";
     stompClient: any;
+    receiver :string ='';
+    sender:string = '';
     public message :any;
     constructor(){
     }
+    ngOnInit() {
+        // Called after the constructor and called  after the first ngOnChanges() 
+     }
     _connect() {
         console.log("Initialize WebSocket Connection");
         let ws = new SockJS(this.webSocketEndPoint);
         this.stompClient = Stomp.over(ws);
         const _this = this;
         _this.stompClient.connect({}, function (frame) {
+           
+            
             _this.stompClient.subscribe(_this.topic, function (sdkEvent) {
               console.log("Message receiiiiiiiiiiiiiiiiiiiiived")
                 _this.onMessageReceived(sdkEvent);
                 _this.message = sdkEvent;
             });
-            //_this.stompClient.reconnect_delay = 2000;
+            _this.stompClient.reconnect_delay = 2000;
         }, this.errorCallBack);
     };
 

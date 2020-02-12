@@ -5,7 +5,7 @@
 }
 
 .wrapper {
-  position: absolute;
+  position: relative;
   top: 0;
   bottom: 0;
   height: 100vh;
@@ -38,10 +38,9 @@
 
 .chat-box {
   z-index: 2;
-  position: absolute;
-  left: 0;
+  right: 0;
   height: 100vh;
-  width: 100vw;
+  width: 20VW;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -234,14 +233,19 @@ Sent message style
     display: inline-block;
   }
   .chat-box {
-    top: auto;
-    left: auto;
-    bottom: 0;
-    right: 300px;
-    height: 20vh;
-    width: 270px;
-    position: fixed;
-    border-radius: 0px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    max-height: calc(100vh - 90px);
+    width: 336px;
+    background: linear-gradient(to bottom,transparent 2px,#fff 2px);
+    border-radius: 2px 2px 0 0;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 4px 6px rgba(0,0,0,.2);
+    transform: translateY(0);
+    transition-timing-function: cubic-bezier(0,0,.2,1);
+    transition-duration: 167ms;
+   
+
   }
 }
 
@@ -264,4 +268,9 @@ Sent message style
   .chat-box {
     height: 60vh;
   }
+}
+
+
+.ml4 {
+  margin-left: 16px!important;
 }
