@@ -4,6 +4,7 @@ import { fadeIn, fadeInOut } from '../animations'
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { AppComponent } from 'src/app/app.component';
 
 
 const rand = max => Math.floor(Math.random() * max)
@@ -17,7 +18,6 @@ const rand = max => Math.floor(Math.random() * max)
 export class ChatWidgetComponent implements OnInit {
   private stompClient;
   public _id:string='';
-  private serverUrl = 'http://localhost:9091/gmart-chat-ws/gmart-chat-ws'
   private receivedMessage: string = '';
   elRef: ElementRef;
   @ViewChild('bottom', null) bottom: ElementRef;
@@ -143,7 +143,7 @@ public _visible = false
   }
 
   initializeWebSocketConnection() {
-    let ws = new SockJS(this.serverUrl);
+    let ws = new SockJS(AppComponent.CHAT_API_WEBSOCKETS_URL);
     this.stompClient = Stomp.over(ws);
     let that = this;
     this.stompClient.connect({  }, (frame) => {

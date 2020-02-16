@@ -25,7 +25,6 @@ import { AppAsideModule } from './views/core/aside';
 import { AppHeaderModule } from './views/core/header';
 import { AppBreadcrumbModule } from './views/core/breadcrumb';
 import { AppSidebarModule } from './views/core/sidebar';
-import { WebSocketAPI } from './websocket-api';
 import { FriendsModule } from './views/friends';
 import { RegistrationComponent } from './views/registration/registration.component';
 import { SplashscreenComponent } from './views/splashscreen/splashscreen.component';
@@ -62,7 +61,7 @@ import { LoginComponent } from './views/login/login.component';
   ],
   entryComponents: [],
 
-  providers: [WebSocketAPI, AuthService, AccountService, UrlPermission, AuthGuard, AnonymousGuardService, SnackbarService,
+  providers: [ AuthService, AccountService, UrlPermission, AuthGuard, AnonymousGuardService, SnackbarService,
     { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },
     {
       provide: STEPPER_GLOBAL_OPTIONS,
