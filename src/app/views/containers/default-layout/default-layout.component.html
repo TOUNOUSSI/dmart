@@ -4,8 +4,24 @@
     [sidebarToggler]="'lg'" [asideMenuToggler]="'lg'" style=" position:fixed;min-width: 300px;">
     <ul class="nav navbar-nav d-md-down-none">
         <li class="nav-item px-3" >
-            <input name="criteria" type="text" class=" col-lg-10" placeholder="Search for ...">
-            <button name="search" class=""><i class="fa fa-search"></i></button>
+            <form class="example-form"  [formGroup]="myFormGroup">
+                <mat-form-field class="col-lg-10 example-full-width">
+                    <input name="criteria" type="text"  
+                    matInput
+                    formControlName="search"  
+                    [matAutocomplete]="auto" 
+                    class="toolbar-search" 
+                    placeholder="Search for ..." (keyup.enter)="searchEvent()" >
+                    <mat-icon matSuffix style="font-size: 1.2em" >search</mat-icon>
+
+                 
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                      {{option}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
         </li>
        
     </ul>

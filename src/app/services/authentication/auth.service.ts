@@ -32,7 +32,7 @@ export class AuthService {
 
     public logIn(user: User) {
         localStorage.clear();
-        return this.https.post(AppComponent.API_URL + '/gmartws-api/authenticate', user).pipe(
+        return this.https.post(AppComponent.API_URL + '/gmartws-core-auth/authenticate', user).pipe(
             tap((response: any) => {
                 localStorage.setItem('Currentuser', user.username);
                 localStorage.setItem('Token', response.token);

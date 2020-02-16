@@ -23,7 +23,7 @@ export class FriendsWidgetComponent implements OnInit {
   @ViewChild('bottom', null) bottom: ElementRef
   @Input() public theme: 'blue' | 'grey' | 'red' = 'blue'
 
-  users:any;
+  friends:any;
 
   public _visible = false
 
@@ -79,9 +79,9 @@ export class FriendsWidgetComponent implements OnInit {
     console.log("User list here ")
 
      this.messengerService.getFriends().then(res =>{
-      this.users = res;
+      this.friends = res;
          })
-    console.log("User heree :  "+JSON.stringify(this.users))
+    console.log("User heree :  "+JSON.stringify(this.friends))
   }
 
   public toggleFriends() {
@@ -101,10 +101,10 @@ export class FriendsWidgetComponent implements OnInit {
 
 
   openNewChat(i){
-    console.log('Open chat box for user :'+this.users[i].username)
+    console.log('Open chat box for user :'+this.friends[i].username)
     const factory = this.componentFactoryResolver.resolveComponentFactory(ChatWidgetComponent);
     let componentRef =  this.firstChatWidget.createComponent(factory);
-    componentRef.instance.operator.name = this.users[i].firstname+' '+this.users[i].lastname;
+    componentRef.instance.operator.name = this.friends[i].firstname+' '+this.friends[i].lastname;
    //componentRef.instance.someObservableOrEventEmitter.subscribe(data => this.prop = data);
        }
 

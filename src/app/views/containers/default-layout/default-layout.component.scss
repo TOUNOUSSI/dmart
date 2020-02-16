@@ -43,3 +43,37 @@ mat-toolbar{
 .col-lg-10 {
     width: 700px;
 }
+
+
+// ::ng-deep .mat-form-field {
+//     .mat-input-element {
+//         color: slategray;
+//     }
+//     .mat-form-field-label {
+//         color: slategray;
+//     }
+//     .mat-form-field-underline {
+//         background-color: slategray;
+//     }
+//     .mat-form-field-ripple {
+//         background-color: slategray;
+//     }
+//     .mat-form-field-required-marker {
+//         color: slategray;
+//     }
+// }
+
+// ::ng-deep .mat-form-field.mat-focused {
+//     .mat-form-field-label {
+//         color: #ff884d;
+//     }
+//     .mat-form-field-ripple {
+//         background-color: #ff884d;
+//     }
+//     .mat-form-field-required-marker {
+//         color: #ff884d;
+//     }
+//     .mat-input-element {
+//         color: #ff884d;
+//     }
+// }
