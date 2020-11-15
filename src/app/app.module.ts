@@ -71,7 +71,7 @@ import { ChatModule } from './views/chat';
   ],
   entryComponents: [],
 
-  providers: [WebSocketAPI, AuthService, AccountService, UrlPermission, AuthGuard, AnonymousGuardService, SnackbarService,
+  providers: [CookieService, WebSocketAPI, AuthService, AccountService, UrlPermission, AuthGuard, AnonymousGuardService, SnackbarService,
     { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },
     {
       provide: STEPPER_GLOBAL_OPTIONS,
