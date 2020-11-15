@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { ChatWidgetComponent } from '../../chat';
+import * as $ from "jquery";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -10,7 +11,6 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-   
   }
 
 }

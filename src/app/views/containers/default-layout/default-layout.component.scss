@@ -44,23 +44,36 @@ mat-toolbar{
     width: 700px;
 }
 
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-  }
-  
-  .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
+
+// ::ng-deep .mat-form-field {
+//     .mat-input-element {
+//         color: slategray;
+//     }
+//     .mat-form-field-label {
+//         color: slategray;
+//     }
+//     .mat-form-field-underline {
+//         background-color: slategray;
+//     }
+//     .mat-form-field-ripple {
+//         background-color: slategray;
+//     }
+//     .mat-form-field-required-marker {
+//         color: slategray;
+//     }
+// }
+
+// ::ng-deep .mat-form-field.mat-focused {
+//     .mat-form-field-label {
+//         color: #ff884d;
+//     }
+//     .mat-form-field-ripple {
+//         background-color: #ff884d;
+//     }
+//     .mat-form-field-required-marker {
+//         color: #ff884d;
+//     }
+//     .mat-input-element {
+//         color: #ff884d;
+//     }
+// }

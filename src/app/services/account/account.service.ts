@@ -33,10 +33,8 @@ export class AccountService {
       );
   }
   signup(user: User) {
-    return this.https
-      .post(AppComponent.API_URL + "/gmartws-core-auth/register", user)
-      .toPromise()
-      .then((response: Response) => response);
+    return this.https.post(AppComponent.API_URL + '/gmartws-core-auth/register', user)
+      .toPromise().then((response: Response) => response);
   }
 
   resetPassword(mail: string) {
@@ -47,15 +45,13 @@ export class AccountService {
       .catch((error) => {});
   }
 
-  getAllUsers(): Observable<any> {
-    return this.https
-      .get<User[]>(AppComponent.API_URL + "/account/accounts")
-      .pipe(
-        map((response: any) => response),
-        catchError((err) => {
-          return throwError(err);
-        })
-      );
+  getAllAccounts(): Observable<User[]> {
+    return this.https.get<User[]>(AppComponent.API_URL + '/gmartws-core-account/all').pipe(
+      map((response: any) => response),
+      catchError((err => {
+        return throwError(err);
+      }))
+    );
   }
 
   getAllInstitutions(): Observable<any> {
@@ -88,6 +84,7 @@ export class AccountService {
       });
   }
 
+  //Function used to block an account
   switchState(id: string) {
     return this.https
       .patch(AppComponent.API_URL + "/account/switchState", id)

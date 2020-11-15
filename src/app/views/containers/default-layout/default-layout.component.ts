@@ -1,8 +1,6 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
-import { AnonymousGuardService } from "src/app/services/url-permission/anonymous-auth.guard";
+import { Component, OnInit, ViewChild,ViewEncapsulation } from "@angular/core";
+import { Router } from "@angular/router";
 import { AccountService } from "src/app/services/account/account.service";
-import { AuthService } from "src/app/services/authentication/auth.service";
 import { navItems } from "../../../_nav";
 import { Observable } from "rxjs";
 import { User } from "src/app/models/user.model";
@@ -11,11 +9,13 @@ import { SafeResourceUrl, DomSanitizer } from "@angular/platform-browser";
 import { ProfileService } from "src/app/services/profile/profile.service";
 import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { WebSocketAPI } from 'src/app/websocket-api';
+import { FormControl, FormControlName, FormGroup, FormBuilder } from '@angular/forms';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: "app-dashboard",
   templateUrl: "./default-layout.component.html",
-  styleUrls: ["./default-layout.component.css"],
+  styleUrls: ["./default-layout.component.scss"],
 })
 export class DefaultLayoutComponent implements OnInit {
  
@@ -30,6 +30,36 @@ export class DefaultLayoutComponent implements OnInit {
 
   public pseudoname: string = "";
   public myProfile: any;
+  myFormGroup: FormGroup;
+  searchHistory: string[] = [];
+  filteredOptions: Observable<string[]>;
+  users:User[] = new Array();
+
+   fromSearchHistory: string[] =new Array();
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    this.fromSearchHistory = this.searchHistory.filter(option => {
+      option.toLowerCase().includes(filterValue)
+    });
+
+    if(this.fromSearchHistory.length ==0 ){
+      this.accountservice.getAllAccounts().toPromise().then(
+       users => {
+         alert(users)
+       });
+    }else{
+      return this.fromSearchHistory;
+    }
+  }
+  toggleMinimize(e) {
+    this.sidebarMinimized = e;
+  }
+
+  searchEvent(): void {
+    console.log('Searched item : ' + this.myFormGroup.get('search').value);
+    this.searchHistory = [this.myFormGroup.get('search').value].concat(this.searchHistory)
+  }
   public initNavItems: Array<any>;
   msgConfirmation: string = "Vous êtes déconnecté.";
 
@@ -55,11 +85,6 @@ export class DefaultLayoutComponent implements OnInit {
   handleMessage(){
     console.log("Message handled")
     console.log("response from observable here "+  this.webSocketAPI.message)
-  }
-
-
-  toggleMinimize(e) {
-    this.sidebarMinimized = e;
   }
 
   public onSearchFriend(username: string) {
@@ -93,6 +118,14 @@ export class DefaultLayoutComponent implements OnInit {
 
 
   ngOnInit() {
+    this.myFormGroup = new FormGroup({
+      search: new FormControl()
+    });
+    this.filteredOptions = this.myFormGroup.get('search').valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
     this.profileService.getMyProfile().subscribe((response) => {
       let profile = response.body;
       this.myProfile = profile;
@@ -119,6 +152,7 @@ export class DefaultLayoutComponent implements OnInit {
     this.router.navigateByUrl("/admin/profile/" + pseudoname);
    
   }
+
   doLogout() {
     if (confirm("Voulez vous vraiment vous déconnecter?")) {
       localStorage.clear();

@@ -9,6 +9,8 @@ export class AppComponent {
   // static API_URL = 'https://gmart-communicator-ws.herokuapp.com/communicatorws';
   static API_URL = "http://localhost:8088/communicatorws";
   // communicatorws/api/gmartws/api/authenticate
+ // static API_URL = 'https://gmart-communicator-ws.herokuapp.com/communicatorws';
+ static CHAT_API_WEBSOCKETS_URL = 'https://gmart-ws-chat-websockets.herokuapp.com/gmart-chat-ws/gmart-chat-ws'
 
   title = "DMART";
   // To close the electron app
