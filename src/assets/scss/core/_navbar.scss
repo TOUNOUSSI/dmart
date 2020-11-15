@@ -5,10 +5,6 @@
   padding: 0;
   margin: 0;
   background-color: $navbar-bg;
-<<<<<<< HEAD
-=======
-
->>>>>>> 75eaa79 (first commit)
   @include borders($navbar-border);
 
   .navbar-brand {
@@ -44,11 +40,6 @@
   .navbar-nav {
     flex-direction: row;
     align-items: center;
-<<<<<<< HEAD
-=======
-    overflow-x: hidden;
-
->>>>>>> 75eaa79 (first commit)
   }
 
   .nav-item {

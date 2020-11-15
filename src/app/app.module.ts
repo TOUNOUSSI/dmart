@@ -67,7 +67,8 @@ import { ChatModule } from './views/chat';
     AppHeaderModule,
     AppBreadcrumbModule,
     AppSidebarModule,
-    FriendsModule
+    FriendsModule,
+    SearchModule
   ],
   entryComponents: [],
 

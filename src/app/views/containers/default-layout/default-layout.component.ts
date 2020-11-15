@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild,ViewEncapsulation } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
+import { AnonymousGuardService } from "src/app/services/url-permission/anonymous-auth.guard";
 import { AccountService } from "src/app/services/account/account.service";
+import { AuthService } from "src/app/services/authentication/auth.service";
 import { navItems } from "../../../_nav";
 import { Observable } from "rxjs";
 import { User } from "src/app/models/user.model";
@@ -9,8 +11,8 @@ import { SafeResourceUrl, DomSanitizer } from "@angular/platform-browser";
 import { ProfileService } from "src/app/services/profile/profile.service";
 import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { WebSocketAPI } from 'src/app/websocket-api';
-import { FormControl, FormControlName, FormGroup, FormBuilder } from '@angular/forms';
-import { startWith, map } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: "app-dashboard",
@@ -33,33 +35,8 @@ export class DefaultLayoutComponent implements OnInit {
   myFormGroup: FormGroup;
   searchHistory: string[] = [];
   filteredOptions: Observable<string[]>;
-  users:User[] = new Array();
+  fromSearchHistory: string[] =new Array();
 
-   fromSearchHistory: string[] =new Array();
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    this.fromSearchHistory = this.searchHistory.filter(option => {
-      option.toLowerCase().includes(filterValue)
-    });
-
-    if(this.fromSearchHistory.length ==0 ){
-      this.accountservice.getAllAccounts().toPromise().then(
-       users => {
-         alert(users)
-       });
-    }else{
-      return this.fromSearchHistory;
-    }
-  }
-  toggleMinimize(e) {
-    this.sidebarMinimized = e;
-  }
-
-  searchEvent(): void {
-    console.log('Searched item : ' + this.myFormGroup.get('search').value);
-    this.searchHistory = [this.myFormGroup.get('search').value].concat(this.searchHistory)
-  }
   public initNavItems: Array<any>;
   msgConfirmation: string = "Vous êtes déconnecté.";
 
@@ -85,6 +62,11 @@ export class DefaultLayoutComponent implements OnInit {
   handleMessage(){
     console.log("Message handled")
     console.log("response from observable here "+  this.webSocketAPI.message)
+  }
+
+
+  toggleMinimize(e) {
+    this.sidebarMinimized = e;
   }
 
   public onSearchFriend(username: string) {
@@ -116,6 +98,21 @@ export class DefaultLayoutComponent implements OnInit {
     });
   }
 
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    this.fromSearchHistory = this.searchHistory.filter(option => {
+      option.toLowerCase().includes(filterValue)
+    });
+
+    if(this.fromSearchHistory.length ==0 ){
+      this.accountservice.getAllAccounts().toPromise().then(
+       users => {
+         alert(users)
+       });
+    }else{
+      return this.fromSearchHistory;
+    }
+  }
 
   ngOnInit() {
     this.myFormGroup = new FormGroup({
@@ -152,7 +149,6 @@ export class DefaultLayoutComponent implements OnInit {
     this.router.navigateByUrl("/admin/profile/" + pseudoname);
    
   }
-
   doLogout() {
     if (confirm("Voulez vous vraiment vous déconnecter?")) {
       localStorage.clear();

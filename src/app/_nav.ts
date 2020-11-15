@@ -99,16 +99,16 @@ export const navItems: INavData[] = [
     ]
   },
   {
-    name: 'Download CoreUI',
-    url: 'http://coreui.io/angular/',
+    name: 'Download DMART',
+    url: 'http://dmart.com',
     icon: 'icon-cloud-download',
     class: 'mt-auto',
     variant: 'success',
     attributes: { target: '_blank', rel: 'noopener' }
   },
   {
-    name: 'Try CoreUI PRO',
-    url: 'http://coreui.io/pro/angular/',
+    name: 'Try DMART PRO',
+    url: 'http://dmart.com',
     icon: 'icon-layers',
     variant: 'danger',
     attributes: { target: '_blank', rel: 'noopener' }
