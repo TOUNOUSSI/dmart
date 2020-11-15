@@ -1,0 +1,88 @@
+<div class="card " (scroll)="scrollHandler($event)">
+  <div class="save-profile-cover-div-inlined" *ngIf='isSaveSideBarShown !== true'>
+    <div class="save-profile-cover-paragraph">
+      <i class="fa fa-globe save-profile-cover-paragraph-i"></i>
+      <span>Your cover photo is public.</span>
+    </div>
+    <button class="btn btn-success save-profile-cover-btn-success col-xs-6 " (click)="onUpload()">Save Changes</button>
+    <button type="reset" class="btn btn-secondary save-profile-cover-btn-cancel col-xs-6 "
+      (click)="onCancel()">Cancel</button>
+
+  </div>
+
+  <picture>
+    <form class="md-form">
+      <div class="file-field big-2 change-cover-btn-container">
+        <div class="btn btn-outline-secondary btn-rounded waves-effect btn-lg change-cover-btn"
+          (click)="onClickOpenImageChooseDialogue($event)">
+          <p class="cover-change-label">Change Cover Photo</p>
+          <p class="cover-change-label-mobile">Edit</p>
+          <i class="fa fa-camera ml-3 icon-float-left" aria-hidden="true"></i>
+
+          <input id="inputimage" class="change-cover-browser-btn" type="file" (change)="onCIChange($event.target.files)"
+            accept=".jpg,jpeg">
+
+        </div>
+      </div>
+    </form>
+
+    <div class="profile-background-container" id="profile-background-container">
+      <img class="mat-card-background-image-blurred" [src]="profileCoverImage" alt="Blured cover">
+    </div>
+
+    <div class="mat-card-image-container">
+      <img mat-card-image [src]="profileCoverImage" alt="Cover of the profile">
+    </div>
+
+  </picture>
+
+  <picture>
+    <form class="md-form">
+      <div class="edit-profile-pic-container btn btn-outline-secondary btn-rounded waves-effect"
+        (click)="onClickOpenProfilePictureChooseDialogue($event)">
+        <i class="fa fa-camera ml-3 icon-float-left profile-picture-avatar-fontawsome" aria-hidden="true"></i>
+        <input id="avatarinputImage" class="change-cover-browser-btn" type="file"
+          (change)="onPPChange($event.target.files)" accept=".jpg,jpeg">
+      </div>
+
+
+      <div class="search-box-container">
+        <profile-avatar [image]="profileImageAvatar" [styles]="['profile-box-avatar']">
+        </profile-avatar>
+      </div>
+    </form>
+  </picture>
+
+</div>
+
+<div class="profile-intro">
+  <div>
+
+    <div class="table profile-intro-container">
+      <h2> {{loadedProfile.firstname}} {{loadedProfile.lastname}}
+        <!-- <span *ngIf="profile.nickname !== undefined ">( {{profile.nickname}} )</span>-->
+      </h2>
+      {{loadedProfile.profileDescription}}
+      <a href="#">Edit</a>
+    </div>
+    <div class="table">
+      <ul id="profile-horizontal-list-menu" class="profile-horizontal-list-start">
+        <li><a href="#">Timeline</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Friends</a></li>
+        <li><a href="#">Photos</a></li>
+        <li><a href="#">Videos</a></li>
+        <li><a href="#">More <i class="fa fa-sort-down fa-center"></i></a></li>
+        <ul class="profile-horizontal-list-end">
+          <li><a href="#"><i class="fa fa-comment"></i> Message</a></li>
+          <li *ngIf="!isMyProfile && !areWeAlreadyFriend"><a (click)="onAddNewFriendToFriendList()" ><i class="fa fa-user-plus"></i> Add Friend</a></li>
+          <li><a href="#"><i class="fa fa-search"></i></a></li>
+          <li><a href="#">...</a></li>
+
+        </ul>
+      </ul>
+
+    </div>
+
+  </div>
+</div>

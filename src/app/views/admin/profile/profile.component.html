@@ -1,0 +1,13 @@
+<dmart-profile-header *ngIf="isParentRendred" [pseudoname]="pseudoname" [loaded-profile]="loadedProfile">
+</dmart-profile-header>
+
+<div class="profile-body">
+  <div>
+
+    <div class="row"></div>
+    <dmart-profile-timeline *ngIf="isParentRendred" [profile]="loadedProfile"></dmart-profile-timeline>
+
+  </div>
+
+
+</div>

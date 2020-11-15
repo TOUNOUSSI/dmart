@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Input, OnInit, ViewChild, ComponentFactoryResolver, ViewContainerRef } from '@angular/core'
+import { Component, ComponentFactoryResolver, ElementRef, HostListener, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core'
 import { Subject } from 'rxjs'
 import { fadeIn, fadeInOut } from '../animations'
 import * as Stomp from 'stompjs';
@@ -7,7 +7,6 @@ import { MessengerService } from 'src/app/services/messenger/messenger.service';
 import { ChatInjectorService } from 'src/app/services/chat-injector/chat-injector.service';
 import { ChatWidgetComponent } from '../../chat';
 import { User } from 'src/app/models/user.model';
-
 
 const rand = max => Math.floor(Math.random() * max)
 
@@ -45,8 +44,12 @@ export class FriendsWidgetComponent implements OnInit {
   }
 
   public focus = new Subject()
-
-  public operator = {
+  public friendsWidget = {
+    totalFriends: '22',
+    status: 'online',
+    avatar: `https://randomuser.me/api/portraits/women/${rand(100)}.jpg`,
+  }
+  public friend = {
     name: 'Chat(22)',
     status: 'online',
     avatar: `https://randomuser.me/api/portraits/women/${rand(100)}.jpg`,
@@ -99,13 +102,13 @@ export class FriendsWidgetComponent implements OnInit {
     }
   }
 
-
+  
   openNewChat(i){
+    console.log("users here : ")
     console.log('Open chat box for user :'+this.users[i].username)
     const factory = this.componentFactoryResolver.resolveComponentFactory(ChatWidgetComponent);
     let componentRef =  this.firstChatWidget.createComponent(factory);
     componentRef.instance.operator.name = this.users[i].firstname+' '+this.users[i].lastname;
    //componentRef.instance.someObservableOrEventEmitter.subscribe(data => this.prop = data);
-       }
-
+  }
 }

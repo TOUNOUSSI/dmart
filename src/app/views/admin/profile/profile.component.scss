@@ -1,0 +1,382 @@
+$light-background: #f2ece4;
+$light-text: #036;
+$dark-background: #6b717f;
+$dark-text: #d2e1dd;
+
+@media only screen and (min-width: 414px) {
+
+
+  .profile-body {
+    margin: 0 21%;
+    padding: 0;
+    width: 60%;
+    box-sizing: border-box;
+    height: 100%;
+    border-radius: 11px;
+  }
+
+}
+
+
+//For Iphone X and small devices
+
+@media only screen and (max-width:414px) {
+  .card {
+    background-color: transparent;
+    border: 0;
+    border: radius 0;
+  }
+
+  .profile-header {
+    margin: 0 21%;
+    padding: 0;
+    width: 70%;
+    box-sizing: border-box;
+    border-radius: 11px;
+  }
+
+  .profile-background-container {
+    overflow: hidden;
+    background-color: transparent;
+    z-index: -1;
+    position: absolute;
+    height: 248%;
+    width: 100%;
+
+  }
+
+  picture {
+    background-color: transparent; //Forcing transparency throuw browsers
+    border: 0;
+    margin: 0 0 0 0;
+    padding: 0 0;
+    border-radius: 0;
+
+
+  }
+
+  .search-box-container {
+    background-color: transparent;
+    border: 3px solid rgba(49, 49, 49, 0.507);
+    margin: 0 0 0 0;
+    padding: 0 0;
+    border-radius: 0;
+    overflow: hidden;
+    z-index: 1;
+    width: 39%;
+    height: 63%;
+    left: 33%;
+    top: 105px;
+    position: absolute;
+    border-radius: 8px 8px 8px 8px;
+  }
+
+  .mat-card-image-container {
+    /* float: left; */
+    /* box-sizing: border-box; */
+    border-radius: 30px 30px 0px 0px;
+    background-color: transparent;
+    /* width: 100%; */
+    height: 190px;
+    margin: 10px 13px 10px 13px;
+    padding: 0 0px 0px 1px;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  //Zoom effect is included
+  .mat-card-image {
+    position: relative;
+    /* margin: 0; */
+    /* padding: 0; */
+    border-radius: 0 0 11px 11px;
+    background-color: transparent;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: scaleX(2) scaleY(1.5);
+    transform: scaleX(1) scaleY(2);
+    padding-top: 37px;
+
+  }
+
+  .mat-card-background-image-blurred {
+    float: left;
+    background-size: cover;
+    left: -0;
+    top: -15px;
+    bottom: -15px;
+    position: absolute;
+    border-radius: 0em;
+    width: 100%;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(8px) saturate(0.8) contrast(1.2);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    padding: 0;
+    height: 464px;
+    z-index: -1;
+    overflow: hidden;
+    transform: scale(1.7);
+
+  }
+
+
+
+  .change-cover-btn {
+    position: absolute;
+    right: 13px;
+    border-radius: 0 0 0 9px;
+    height: 30px;
+    width: 74px;
+    bottom: 10px;
+    font-size: 16px;
+    background-color: #d6d2d26b;
+    padding: 0;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .icon-float-left {
+    position: absolute;
+    left: -8%;
+    font-size: 15px;
+    top: 32%;
+  }
+
+  .cover-change-label {
+    display: none;
+  }
+
+  .cover-change-label-mobile {
+    position: relative;
+    right: -11px;
+    margin: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    display: initial;
+  }
+
+  .change-cover-browser-btn {
+    position: absolute;
+    right: 13px;
+    border-radius: 9px 0px 0 0;
+    height: 24px;
+    width: 71px;
+    bottom: 10px;
+    font-size: 16px;
+    padding: 0 0 0 0px;
+    z-index: 1;
+    cursor: pointer;
+    visibility: hidden;
+  }
+
+  .profile-intro {
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .profile-body {
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    height: 350px;
+  }
+
+  .profile-intro-container {
+    list-style-type: none;
+
+    overflow: hidden;
+    // background-color: #333333;
+
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    font-family: "Arial";
+  }
+
+  .profile-intro-container>a {
+
+    display: block;
+    color: blue($color: #000000);
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Arial";
+    margin-top: 0.5rem;
+    margin-bottom: 2px;
+
+  }
+
+  .profile-intro-container>h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+
+  }
+
+  .profile-intro-container>h2>span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+  }
+
+
+
+  .profile-horizontal-list-start {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    float: left;
+    width: 100%;
+
+  }
+
+  .profile-horizontal-list-start>li {
+
+    display: none
+  }
+
+  .profile-horizontal-list-start>ul {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+
+
+  }
+
+  .profile-horizontal-list-start li {
+    padding-left: 0;
+    margin-left: 0;
+
+  }
+
+  .table {
+    display: table;
+    /* Allow the centering to work */
+    margin: 0 auto;
+    background-color: transparent;
+  }
+
+
+  .profile-horizontal-list-end {
+    list-style-type: none;
+
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    height: 50px;
+
+  }
+
+
+
+  .profile-horizontal-list-end>li:first-child {
+    background-color: #ffffff5e;
+    list-style-type: none;
+    /* padding: 0px 0px; */
+    /* padding: 0px 0px; */
+    overflow: hidden;
+    border-radius: 0 0 0 30px;
+    padding-left: 0;
+    margin-left: 14px;
+    width: 85%;
+
+  }
+
+  .profile-horizontal-list-end>li:not(:first-child) {
+    background-color: #ffffff5e;
+    list-style-type: none;
+    /* padding: 0px 0px; */
+    /* padding: 0px 0px; */
+    overflow: hidden;
+    margin-left: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 0px;
+
+  }
+
+
+  .profile-horizontal-list-end>li:last-child {
+    list-style-type: none;
+    /* padding: 0px 0px; */
+    /* padding: 0px 0px; */
+    overflow: hidden;
+    border-radius: 0px 0px 30px 0px;
+    margin-right: 16px;
+
+  }
+
+  .profile-horizontal-list-end>li W a:not(:first-child) {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Arial";
+
+  }
+
+
+
+  .profile-horizontal-list-end>li>a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Arial";
+    margin-top: 14px;
+
+  }
+
+  .profile-horizontal-list-end>li>a:hover {
+    background-color: #bebdbd3a;
+  }
+
+
+  .profile-timeline {
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 11px;
+  }
+
+  .profile-timeline-col-left {
+    /* float: left; */
+    /* padding: 33px; */
+    margin: 16px 23px 16px 23px;
+    /* margin-left: -1em; */
+    width: 100%;
+    background-color: #343030;
+    border-radius: 9px;
+  }
+
+  .profile-timeline-col-right {
+    margin: 0px 23px;
+    padding-right: 0px;
+    position: relative;
+    width: 100%;
+
+  }
+
+
+
+  textarea {
+    border: 0;
+    font-size: 13px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    padding: 0 10px;
+    width: calc(100% - 20px) !important;
+  }
+}

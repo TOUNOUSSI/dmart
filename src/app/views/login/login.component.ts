@@ -3,7 +3,7 @@ import {AuthService} from '../../services/authentication/auth.service';
 import {User} from '../../models/user.model';
 import { ActivatedRoute } from '@angular/router';
 import { SnackbarService } from 'src/app/services/notifications/toaster/snackbar.service';
-
+import {CookieService} from "ngx-cookie-service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +11,7 @@ import { SnackbarService } from 'src/app/services/notifications/toaster/snackbar
 })
 export class LoginComponent implements OnInit {
   user: User = new User();
-  constructor(private authService: AuthService, private toasterService: SnackbarService, private route: ActivatedRoute) {
+  constructor(private authService: AuthService, private toasterService: SnackbarService, private cookieService : CookieService) {
    }
 
   ngOnInit() { }
@@ -21,9 +21,15 @@ export class LoginComponent implements OnInit {
         
                 localStorage.clear();
                 this.authService.logIn(this.user).subscribe(
-                    result => {
-                      this.toasterService.message = "Welcome to DMART";
-                      this.toasterService.open();
+                    response => {
+                      if(response.authenticatedUser.error === undefined){
+                        this.cookieService.set('__psdnm_',response.authenticatedUser.pseudoname);
+                        this.toasterService.message = "Welcome to DMART";
+                        this.toasterService.open();
+                      }else{
+                        this.toasterService.message = response.authenticatedUser.error.message;
+                        this.toasterService.open(); 
+                      }
                     },
                     (err: any) => {
                             this.toasterService.message = err.error.error.message; 

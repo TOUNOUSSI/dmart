@@ -4,11 +4,12 @@ import { FriendsAvatarComponent } from './friends-avatar/friends-avatar.componen
 import { FriendsWidgetComponent } from './friends-widget/friends-widget.component'
 import { FriendsInputComponent } from './friends-input/friends-input.component'
 import { FriendsConfigComponent } from './friends-config/friends-config.component'
+import { ChatModule, ChatWidgetComponent } from '../chat'
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule,ChatModule],
   declarations: [FriendsAvatarComponent, FriendsWidgetComponent, FriendsInputComponent, FriendsConfigComponent],
   exports: [FriendsWidgetComponent, FriendsConfigComponent],
-  entryComponents: [FriendsWidgetComponent, FriendsConfigComponent],
+  entryComponents: [FriendsWidgetComponent, FriendsConfigComponent,ChatWidgetComponent],
 })
 export class FriendsModule {}

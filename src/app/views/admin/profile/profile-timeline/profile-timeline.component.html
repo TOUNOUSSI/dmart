@@ -1,0 +1,192 @@
+<div id="timeline-container" class="timeline-container">
+  <div class="profile-timeline">
+    <div class="row">
+      <div class="profile-timeline-col-left">
+        <div class="box image">
+          <div class="box-header">
+            <h3 style="color: seashell;">
+              Intro
+            </h3>
+            <div>
+              <div class="profile-intro-simple-line-row">
+                <i class="fa fa-graduation-cap profile-intro-fontawsome"></i>
+                <span class="profile-intro-span" dir="auto">
+                  Studied at
+                </span>
+                <a class="profile-intro-a" href="" role="link" tabindex="0">
+                  <span class="profile-intro-single-row-span">
+                    Ecole supérieure de technologie d'Essaouira
+                  </span>
+                </a>
+              </div>
+
+              <div class="profile-intro-multiple-line-row">
+                <i class="fa fa-graduation-cap profile-intro-fontawsome"></i>
+                <span class="profile-intro-span" dir="auto">
+                  Goes to
+                </span>
+                <a class="profile-intro-a" href="" role="link" tabindex="0">
+                  <span class="profile-intro-multiple-row-span">
+                    Ecole Marocaine de Sciences de l'Igénieur(Page Officielle)
+                  </span>
+                </a>
+              </div>
+
+              <div class="profile-intro-simple-line-row">
+                <i class="fa fa-home profile-intro-fontawsome"></i>
+                <span class="profile-intro-span" dir="auto">
+                  Studied at
+                </span>
+                <a class="profile-intro-a" href="" role="link" tabindex="0">
+                  <span class="profile-intro-single-row-span">
+                    Ecole supérieure de technologie d'Essaouira
+                  </span>
+                </a>
+              </div>
+
+              <div class="profile-intro-simple-line-row">
+                <i class="fa fa-map-marker profile-intro-fontawsome"></i>
+                <span class="profile-intro-span" dir="auto">
+                  Studied at
+                </span>
+
+                <a class="profile-intro-a" href="" role="link" tabindex="0">
+                  <span class="profile-intro-single-row-span">
+                    Ecole supérieure de technologie d'Essaouira
+                  </span>
+                </a>
+              </div>
+              <div class="profile-intro-simple-line-row">
+                <i class="fa fa-heart profile-intro-fontawsome"></i>
+                <span class="profile-intro-span" dir="auto">
+                  Studied at
+                </span>
+
+                <a class="profile-intro-a" href="" role="link" tabindex="0">
+                  <span class="profile-intro-single-row-span">
+                    Ecole supérieure de technologie d'Essaouira
+                  </span>
+                </a>
+              </div>
+              <div class="profile-intro-simple-line-row">
+                <i class="fa fa-rss profile-intro-fontawsome"></i>
+                <span class="profile-intro-span" dir="auto">
+                  Studied at
+                </span>
+                <a class="profile-intro-a" href="" role="link" tabindex="0">
+                  <span class="profile-intro-single-row-span">
+                    Ecole supérieure de technologie d'Essaouira
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="profile-timeline-col-right">
+        <div class="box image">
+          <div class="box-header">
+            <div class="box-avatar">
+              <img [src]="profileImageAvatar" alt="{{ loadedProfile.firstname }} {{ loadedProfile.lastname }}" />
+            </div>
+          </div>
+
+          <div class="box-new-post">
+            <div class="content">
+              <div class="content-row">
+                <button data-target="#details" data-toggle="modal" (click)="openDialog()">
+                  <textarea placeholder="What's in your head ?"></textarea>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="box-buttons">
+            <div class="row">
+              <button>
+                <i class="fa fa-video-camera"></i>
+                <span class="box-buttons-font"> Live</span>
+              </button>
+              <button>
+                <i class="fa fa-picture-o"></i><span class="box-buttons-font"> Photo/Video</span>
+              </button>
+              <button>
+                <i class="fa fa-flag"></i><span class="box-buttons-font"> Life Event</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="box image">
+          <div class="box-header">
+            <h3>
+              <img [src]="profileImageAvatar" alt="{{ loadedProfile.firstname }} {{ loadedProfile.lastname }}" />
+              <a [routerLink]="['/admin/profile/', loadedProfile.pseudoname]">
+                {{ loadedProfile.firstname }}
+                {{ loadedProfile.lastname }}</a>
+              <span style="padding-top: 14px;">March 21,18:45pm <i class="fa fa-globe"></i></span>
+            </h3>
+            <span style="background-color: transparent;"><i class="fa fa-angle-down"></i></span>
+            <div class="window"><span></span></div>
+          </div>
+          <div class="box-content">
+            <div class="content">
+              <img src="https://goo.gl/nvqkEz" alt="" />
+            </div>
+            <div class="bottom">
+              <p>HEEEEEEEEEL LOL LLKLKDLKDLK LKDLDKDLK HDJDD JHDJHDHD</p>
+              <span><span class="fa fa-search-plus"></span></span>
+            </div>
+          </div>
+          <div class="box-likes">
+            <div class="row">
+              <span><a href="#"><img src="https://goo.gl/oM0Y8G" alt="" /></a></span>
+              <span><a href="#"><img src="https://goo.gl/vswgSn" alt="" /></a></span>
+              <span><a href="#"><img src="https://goo.gl/4W27eB" alt="" /></a></span>
+              <span><a href="#">+99</a></span>
+              <span>Like this</span>
+            </div>
+            <div class="row">
+              <span>145 comments</span>
+            </div>
+          </div>
+          <div class="box-buttons">
+            <div class="row">
+              <button><span class="fa fa-thumbs-up"></span></button>
+              <button><span class="fa fa-comment"></span></button>
+              <button><span class="fa fa-share"></span></button>
+            </div>
+          </div>
+          <div class="box-comments">
+            <div class="comment">
+              <img src="https://goo.gl/oM0Y8G" alt="" />
+              <div class="content">
+                <h3>
+                  <a href="">Emily Rudd</a>
+                </h3>
+                <div class="bottom">
+                  <p>
+                    Lorem ipsum, or lipsum as it is sometimes known, is dummy
+                    text used in laying out print, graphic or web designs.
+                  </p>
+                </div>
+                <span><time> 1 hr - </time><a href="#">Like</a></span>
+              </div>
+            </div>
+          </div>
+          <div class="box-new-comment">
+            <img src="https://goo.gl/oOD0V2" alt="" />
+            <div class="content">
+              <div class="row">
+                <textarea placeholder="write a comment..."></textarea>
+              </div>
+              <div class="row">
+                <span class="ion-android-attach"></span>
+                <span class="fa fa-smile-o"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

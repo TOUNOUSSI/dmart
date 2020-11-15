@@ -3,12 +3,12 @@
     <div class="friends-box-header" (click)="toggleFriends()">
       <div class="">
         <div class="operator-status">
-          {{operator.status}}
+          {{friendsWidget.status}}
           <span class="operator-status-online">●</span>
           <span class="friends-button-header" *ngIf="visible" (click)="toggleFriends()">✕</span>
         </div>
         <h3 class="operator-name">
-          {{operator.name}}
+          Chat({{friendsWidget.totalFriends}})
         </h3>
       </div>
     </div>
@@ -19,7 +19,7 @@
           <div>
             <div class=" mr-3 float-left" style="display: inline-block;">
               <div class="avatar">
-                <img src="assets/img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                <img src="assets/img/avatars/7.jpg" class="img-avatar" alt="youssef.tounoussi@gmail.com">
                 <span class="avatar-status badge-success"></span>
               </div>
             </div>
@@ -38,8 +38,8 @@
   </div>
   <button class="friends-button" *ngIf="!visible" (click)="toggleFriends()">
 
-    <span [@fadeIn]> {{operator.name}}</span>
-  </button>
+<span [@fadeIn]> Chat({{friendsWidget.totalFriends}})</span>
+</button>
 </div>
 <aside   class="ml4 chat-widget-ul " id="listOfChatWidgets" >
   <ng-template #chatFirstWidget></ng-template>
