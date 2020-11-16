@@ -7,6 +7,7 @@ import { SearchComponent } from './search.component';
 import { FriendsModule } from '../../friends';
 import { AdminModule } from '../../admin/admin.module';
 import { FriendsAvatarComponent } from '../../friends/friends-avatar/friends-avatar.component';
+import { SearchAvatarComponent } from './search-avatar/search-avatar.component';
 
 @NgModule({
   imports: [
@@ -20,9 +21,11 @@ import { FriendsAvatarComponent } from '../../friends/friends-avatar/friends-ava
   exports: [
     SearchComponent,
     LayoutModule,
+    SearchAvatarComponent
     ],
   declarations: [
     SearchComponent,
+    SearchAvatarComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

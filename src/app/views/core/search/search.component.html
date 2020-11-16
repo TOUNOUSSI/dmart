@@ -6,12 +6,12 @@
 
 <ul class="nav navbar-nav d-md-down-none" style="position:absolute;width: 100%;">
 
-  <li class=" friend-item form-control " *ngFor="let usr of matchingUsers; let i index">
+  <li class=" search-item form-control " *ngFor="let usr of matchingUsers; let i index">
     <a [routerLink]="['/admin/profile',usr.profile.pseudoname]">
 
       <div class="search-box-header">
-        <friends-avatar [id]="usr.username" [image]="operator.avatar" [styles]="['search-box-avatar']">
-        </friends-avatar>
+        <search-avatar [id]="usr.username" [image]="operator.avatar" [styles]="['search-box-avatar']">
+        </search-avatar>
         <h3 class="operator-name">
           {{usr.username}}
         </h3>
