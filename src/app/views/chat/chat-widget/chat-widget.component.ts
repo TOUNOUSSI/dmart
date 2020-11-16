@@ -36,7 +36,7 @@ export class ChatWidgetComponent implements OnInit {
 
   public message :any;
 
-MessageRequest: any = {
+messageRequest: any = {
   type: "CHAT",
   sender:  this.fromUser ,
   content: '',
@@ -81,6 +81,7 @@ public _visible = false
   public operator = {
     name: 'Operator',
     status: 'online',
+    username:'',
     avatar: `https://randomuser.me/api/portraits/women/${rand(100)}.jpg`,
   }
 
@@ -126,8 +127,8 @@ public _visible = false
     if (message.trim() === '') {
       return
     }
-    this.MessageRequest.content = message
-    this.stompClient.send("/ws/send/message", {}, JSON.stringify(this.MessageRequest));
+    this.messageRequest.content = message
+    this.stompClient.send("/ws/send/message", {}, JSON.stringify(this.messageRequest));
     this.addMessage(this.client, message, 'sent')
 
   }

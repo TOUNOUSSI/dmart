@@ -8,6 +8,8 @@ import { ChatModule } from "../chat";
 import { FriendsModule } from "../friends";
 import { ProfileComponent } from "./profile/profile.component";
 import { RouterModule } from "@angular/router";
+import { CookieService } from 'ngx-cookie-service';
+
 import {
   MatCardModule,
   MatDialogModule,
@@ -44,6 +46,6 @@ import { BsModalService } from 'ngx-bootstrap/modal';
     NewPostModalComponent,
   ],
   entryComponents: [NewPostModalComponent],
-  providers: [BsModalService],
+  providers: [BsModalService,CookieService],
 })
 export class AdminModule {}

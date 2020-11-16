@@ -108,6 +108,8 @@ export class FriendsWidgetComponent implements OnInit {
     const factory = this.componentFactoryResolver.resolveComponentFactory(ChatWidgetComponent);
     let componentRef =  this.firstChatWidget.createComponent(factory);
     componentRef.instance.operator.name = this.friends[i].firstname+' '+this.friends[i].lastname;
+    componentRef.instance.toUser = this.friends[i].username;
+    componentRef.instance.messageRequest.receiver = this.friends[i].username;
    //componentRef.instance.someObservableOrEventEmitter.subscribe(data => this.prop = data);
   }
 }
