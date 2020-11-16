@@ -22,7 +22,7 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
   @Input() navbarBrand: any;
   @Input() navbarBrandFull: any;
   @Input() navbarBrandMinimized: any;
-  @Input() navbarBrandText: any = { icon: "🅲", text: "🅲 CoreUI" };
+  @Input() navbarBrandText: any = { icon: "【Ｄ】", text: "【Ｄ】DMART" };
   @Input() navbarBrandHref: ""; // deprecated, use navbarBrandRouterLink instead
   @Input() navbarBrandRouterLink: any[] | string = "";
 

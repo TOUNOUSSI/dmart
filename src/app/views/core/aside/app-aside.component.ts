@@ -4,7 +4,7 @@ import { asideMenuCssClasses } from '../shared';
 
 
 @Component({
-  selector: 'app-aside, cui-aside',
+  selector: 'app-aside, dmart-aside',
   template: `<ng-content></ng-content>`
 })
 export class AppAsideComponent implements OnInit, OnDestroy {

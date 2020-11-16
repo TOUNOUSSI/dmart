@@ -6,7 +6,7 @@ import { sidebarCssClasses } from '../shared';
 import { AppSidebarService } from './app-sidebar.service';
 
 @Component({
-  selector: 'app-sidebar, cui-sidebar',
+  selector: 'app-sidebar, gmart-sidebar',
   template: `<ng-content></ng-content>`
 })
 export class AppSidebarComponent implements OnInit, OnDestroy {
