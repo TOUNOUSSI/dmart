@@ -5,6 +5,7 @@
   padding: 0;
   margin: 0;
   background-color: $navbar-bg;
+
   @include borders($navbar-border);
 
   .navbar-brand {
@@ -40,6 +41,8 @@
   .navbar-nav {
     flex-direction: row;
     align-items: center;
+    overflow-x: hidden;
+
   }
 
   .nav-item {

@@ -169,7 +169,7 @@ html[dir="rtl"] {
   //
   .aside-menu-fixed {
     .aside-menu {
-      position: fixed;
+      position: absolute;
       height: 100%;
 
       .tab-content {
@@ -186,7 +186,7 @@ html[dir="rtl"] {
 
   .aside-menu-off-canvas {
     .aside-menu {
-      position: fixed;
+      position: absolute;
       z-index: $zindex-sticky - 1;
       height: 100%;
     }

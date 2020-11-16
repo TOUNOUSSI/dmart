@@ -30,13 +30,16 @@ $DMART-theme: mat-light-theme($DMART-primary, $DMART-accent, $DMART-warn);
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    overflow: hidden;
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 // If you want to override variables do it here
 @import "assets/scss/variables";
 
 // Import styles
-@import "assets/scss/core/coreui.scss";
+@import "assets/scss/core/dmart.scss";
 
 // If you want to add something do it here
 @import "assets/scss/custom";
