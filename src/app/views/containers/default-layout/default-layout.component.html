@@ -45,7 +45,7 @@
     </li>
   </ul>
 </app-header>
-<div class="app-body">
+<div class="app-body" style="overflow:hidden;">
   <div>
     <app-sidebar #appSidebar [fixed]="false" [display]="'lg'" [minimized]="sidebarMinimized"
       (minimizedChange)="toggleMinimize($event)">

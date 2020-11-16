@@ -8,7 +8,7 @@
   @include borders($sidebar-borders);
   z-index: 1000;
   height: 93%;
-  position: absolute;
+  position: fixed;
 
   .sidebar-close {
     position: absolute;
@@ -289,21 +289,22 @@
   }
 
   .sidebar-minimizer {
-    position: fixed;
     flex: 0 0 $sidebar-minimizer-height;
     cursor: pointer;
     background-color: $sidebar-minimizer-bg;
     border: 0;
     @include borders($sidebar-minimizer-borders);
     bottom: 0;
-    position: relative;
+    z-index: 6555;
+
 
     &::before {
-      position: absolute;
+      position: relative;
       top: 0;
       right: 0;
       width: $sidebar-minimizer-height;
       height: $sidebar-minimizer-height;
+      float: right;
       content: "";
       background-image: $sidebar-minimizer-indicator;
       background-repeat: no-repeat;

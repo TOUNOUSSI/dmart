@@ -6,7 +6,7 @@
   @include borders($aside-menu-borders);
     z-index: 1019;
     width: 200px;
-    position: absolute;
+    position: fixed;
     height: 100%;
     
   .nav-tabs {
