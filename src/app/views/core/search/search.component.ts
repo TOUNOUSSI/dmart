@@ -58,7 +58,6 @@ export class SearchComponent implements OnInit {
     if (username !== "") {
       this.accountservice.getSearchUsersList(username).subscribe((data) => {
         this.matchingUsers = data;
-        console.log("AAAA : " + JSON.stringify(data));
       });
     } else {
       this.matchingUsers = [];
@@ -72,7 +71,6 @@ export class SearchComponent implements OnInit {
     console.log("OnChange Event called!");
     let input = document.getElementById("inpt_search") as HTMLInputElement;
     let searchIcon = document.getElementById("search-icon") as HTMLLabelElement;
-    console.log("input.value " + input.value);
     if (input.value != "") {
       this.onMouseEnter();
     } else {
