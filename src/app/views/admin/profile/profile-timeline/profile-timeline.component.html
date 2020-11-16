@@ -84,14 +84,14 @@
         </div>
       </div>
       <div class="profile-timeline-col-right">
-        <div class="box image">
+        <div class="box image" *ngIf="isMyProfile">
           <div class="box-header">
             <div class="box-avatar">
               <img [src]="profileImageAvatar" alt="{{ loadedProfile.firstname }} {{ loadedProfile.lastname }}" />
             </div>
           </div>
 
-          <div class="box-new-post">
+          <div class="box-new-post" >
             <div class="content">
               <div class="content-row">
                 <button data-target="#details" data-toggle="modal" (click)="openDialog()">

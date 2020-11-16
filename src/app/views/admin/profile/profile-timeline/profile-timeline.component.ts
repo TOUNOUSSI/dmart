@@ -11,6 +11,7 @@ import { SafeResourceUrl, DomSanitizer } from "@angular/platform-browser";
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 import { NewPostModalComponent } from "../../new-post-modal/new-post-modal.component";
 import { MatDialog, MatDialogConfig } from "@angular/material";
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: "dmart-profile-timeline",
@@ -21,6 +22,9 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 export class ProfileTimelineComponent implements OnInit {
   @Input("profile")
   public loadedProfile: any;
+
+  public isMyProfile:Boolean = true;
+
   modalRef: BsModalRef;
   @ViewChild("templateref", { static: false })
   public templateref: TemplateRef<any>;
@@ -28,12 +32,17 @@ export class ProfileTimelineComponent implements OnInit {
   profileImageAvatar: SafeResourceUrl;
 
   constructor(
+    private cookieService: CookieService,
     private _sanitizer: DomSanitizer,
     private modalService: BsModalService,
     public dialog: MatDialog
   ) {}
 
   ngOnInit() {
+    console.log(this.loadedProfile.pseudoname !== this.cookieService.get('__psdnm_'))
+    if( this.loadedProfile.pseudoname !== this.cookieService.get('__psdnm_')){
+      this.isMyProfile = false;
+    }
     if (
       this.loadedProfile.pictures !== undefined &&
       this.loadedProfile.pictures.length > 0
