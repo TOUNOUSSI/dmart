@@ -19,7 +19,6 @@ import { ProfileHeaderComponent } from "./profile/profile-header/profile-header.
 import { ProfileBodyComponent } from "./profile/profile-body/profile-body.component";
 import { ProfileTimelineComponent } from "./profile/profile-timeline/profile-timeline.component";
 import { NewPostModalComponent } from "./new-post-modal/new-post-modal.component";
-import { NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
 import { AngularMaterialModule } from "src/app/angular-material.module";
 import { ProfileAvatarComponent } from './profile/profile-avatar/profile-avatar.component';
 import { BsModalService } from 'ngx-bootstrap/modal';

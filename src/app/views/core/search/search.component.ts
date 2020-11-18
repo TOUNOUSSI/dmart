@@ -39,7 +39,7 @@ const rand = (max) => Math.floor(Math.random() * max);
 })
 export class SearchComponent implements OnInit {
   matchingUsers: User[];
-
+  isOpen:boolean = false;
   public operator = {
     name: "Chat(22)",
     status: "online",
@@ -83,7 +83,7 @@ export class SearchComponent implements OnInit {
    */
   onMouseEnter() {
     console.log("onMouseEnter Event called!");
-
+    this.isOpen = true;
     let searchIcon = document.getElementById("search-icon") as HTMLLabelElement;
     searchIcon.classList.remove("search-change-inactive");
     searchIcon.classList.add("search-change-active");
@@ -99,6 +99,7 @@ export class SearchComponent implements OnInit {
    */
   onMouseLeave() {
     console.log("onMouseLeave Event called!");
+    this.isOpen = false;
 
     let searchIcon = document.getElementById("search-icon") as HTMLLabelElement;
     let input = document.getElementById("inpt_search") as HTMLInputElement;
