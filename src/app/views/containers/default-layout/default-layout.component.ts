@@ -123,8 +123,7 @@ export class DefaultLayoutComponent implements OnInit {
         startWith(''),
         map(value => this._filter(value))
       );
-    this.profileService.getMyProfile().subscribe((response) => {
-      let profile = response.body;
+    this.profileService.getMyProfile().subscribe((profile) => {
       this.myProfile = profile;
       console.log("Inside Default layout profile loading ... ");
       this.pseudoname = profile.pseudoname;

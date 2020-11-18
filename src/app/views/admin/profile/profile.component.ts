@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
     this.pseudoname = this.route.snapshot.params.pseudoname;
 
     this.profileService.getProfile(this.pseudoname).subscribe((response) => {
-      this.loadedProfile = response.body;
+      this.loadedProfile = response;
       this.isParentRendred = true;
     });
   }

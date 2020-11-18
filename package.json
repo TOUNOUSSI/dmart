@@ -67,7 +67,8 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "ngx-cookie-service":"10.1.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.802.2",
@@ -89,7 +90,8 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "ngx-cookie-service":"10.1.1"
   },
   "engines": {
     "node": "12.13.0",
