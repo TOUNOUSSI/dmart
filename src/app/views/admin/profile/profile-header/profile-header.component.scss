@@ -1,6 +1,7 @@
 //Laptops screen size 15" and 13"
 @media only screen and (min-width : 415px) {
   .save-profile-cover-div-inlined {
+    z-index: 1;
     position: absolute;
     right: 0px;
     width: 100%;
