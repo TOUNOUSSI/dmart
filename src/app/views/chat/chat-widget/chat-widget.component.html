@@ -1,45 +1,68 @@
-<div class="ml4 chat-widget-li    {{theme}}" >
-  <div class="chat-box display-flex flex-column" id="{{_id}}" *ngIf="visible" [@fadeInOut]="visible">
-    <div class="chat-box-header" (click)="closeChat()">
+<div class="ml4 chat-widget-li  {{ theme }}" id="chat-container-{{ _id }}">
+  <div
+    class="chat-box display-flex flex-column"
+    id="{{ _id }}"
+    *ngIf="visible"
+    [@fadeInOut]="visible"
+  >
+    <div class="chat-hidden-toggle" (click)="toggleChat()"></div>
+    <div class="chat-box-header">
       <div class="">
-
-        <div class="operator-status" >
-          {{operator.status}}
+        <div class="operator-status">
+          {{ receiver.status }}
           <span class="operator-status-online">●</span>
-          <span class="chat-button-header" *ngIf="visible" (click)="toggleChat()">✕</span>
+          <button
+            class="chat-button-header"
+            *ngIf="visible"
+            (click)="closeChat()"
+          >
+            ✕
+          </button>
         </div>
-        <chat-avatar [image]="operator.avatar"></chat-avatar>
+        <chat-avatar [image]="receiver.avatar"></chat-avatar>
         <h5 class="operator-name">
-          {{operator.name}}
+          {{ receiver.firstname }} {{ receiver.lastname }}
         </h5>
-
-       
       </div>
     </div>
     <div class="chat-box-main">
       <div class="chat-message-bottom" #bottom></div>
       <ng-container *ngFor="let message of messages">
-        <div class="chat-message" [class.chat-message-received]="message.type === 'received'"
-             [@fadeIn]
-             [class.chat-message-sent]="message.type === 'sent'">
-          <div >
-            <chat-avatar [image]="message.from.avatar" class="chat-message-from-avatar"></chat-avatar>
+        <div
+          class="chat-message"
+          [class.chat-message-received]="message.type === 'received'"
+          [@fadeIn]
+          [class.chat-message-sent]="message.type === 'sent'"
+        >
+          <div>
+            <chat-avatar
+              [image]="message.from.avatar"
+              class="chat-message-from-avatar"
+            ></chat-avatar>
             <div class="chat-message-text">
-              {{message.text}}
+              {{ message.text }}
             </div>
           </div>
           <div class="chat-message-date">
-            {{message.date | date: 'short'}}
+            {{ message.date | date: "short" }}
           </div>
         </div>
       </ng-container>
     </div>
     <div class="chat-box-footer">
-      <chat-input (send)="sendMessage($event)" (dismiss)="toggleChat()" [focus]="focus"></chat-input>
+      <chat-input
+        (send)="sendMessage($event)"
+        (dismiss)="toggleChat()"
+        [focus]="focus"
+      ></chat-input>
     </div>
   </div>
-  <button class="chat-button" *ngIf="!visible" (click)="toggleChat()">
-   
-    <span [@fadeIn] > {{operator.name}}</span>
+  <button
+    class="chat-button"
+    *ngIf="!visible"
+    id="{{ _id }}"
+    (click)="toggleChat()"
+  >
+    <span [@fadeIn]> {{ receiver.firstname }} {{ receiver.lastname }}</span>
   </button>
 </div>
