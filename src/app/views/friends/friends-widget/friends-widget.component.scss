@@ -98,7 +98,7 @@
   margin-right: 10px;
 }
 
-.friends-message {
+.friends-list {
   display: block;
   width: auto;
   margin: 5px;
@@ -109,19 +109,19 @@
 
 }
 
-.friends-message-date {
+.friends-list-date {
   font-size: 10px;
   color: #8D898D;
   padding: 5px;
 }
 
-.friends-message-from-avatar {
+.friends-list-from-avatar {
   height: 25px;
   width: 25px;
   border-radius: 50%;
 }
 
-.friends-message-text {
+.friends-list-text {
   margin-left: 10px;
   padding: 10px;
   border-radius: 3px;
@@ -130,17 +130,17 @@
 /**
 Received message style
  */
-.friends-message-received {
+.friends-list-received {
   margin-right: 50px;
 }
 
-.friends-message-received .friends-message-text {
+.friends-list-received .friends-list-text {
   background: #B9D6F2;
   margin-left: 50px;
   border-bottom-left-radius: 0;
 }
 
-.friends-message-received .friends-message-text:before {
+.friends-list-received .friends-list-text:before {
   position: absolute;
   content: " ";
   left: -10px;
@@ -150,11 +150,11 @@ Received message style
   z-index: 0;
 }
 
-.friends-message-received .friends-message-date {
+.friends-list-received .friends-list-date {
   margin-left: 50px;
 }
 
-.friends-message-received .friends-message-from-avatar {
+.friends-list-received .friends-list-from-avatar {
   position: absolute;
   left: 0;
   bottom: -15px;
@@ -163,21 +163,21 @@ Received message style
 /**
 Sent message style
  */
-.friends-message-sent {
+.friends-list-sent {
   align-self: flex-end;
 }
 
-.friends-message-sent .friends-message-from {
+.friends-list-sent .friends-list-from {
   float: right;
 }
 
-.friends-message-sent .friends-message-text {
+.friends-list-sent .friends-list-text {
   background: #84DCCF;
   margin-right: 50px;
   border-bottom-right-radius: 0;
 }
 
-.friends-message-sent .friends-message-text:after {
+.friends-list-sent .friends-list-text:after {
   position: absolute;
   content: " ";
   right: -10px;
@@ -187,12 +187,12 @@ Sent message style
   z-index: 0;
 }
 
-.friends-message-sent .friends-message-date {
+.friends-list-sent .friends-list-date {
   text-align: right;
   padding-right: 50px;
 }
 
-.friends-message-sent .friends-message-from-avatar {
+.friends-list-sent .friends-list-from-avatar {
   position: absolute;
   right: 0;
   bottom: -15px;

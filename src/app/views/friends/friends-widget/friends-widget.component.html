@@ -1,47 +1,61 @@
-<div class="wrapper {{theme}}">
+<div class="wrapper {{ theme }}">
   <div class="friends-box" *ngIf="visible" [@fadeInOut]="visible">
     <div class="friends-box-header" (click)="toggleFriends()">
       <div class="">
         <div class="operator-status">
-          {{friendsWidget.status}}
+          {{ friendsWidget.status }}
           <span class="operator-status-online">●</span>
-          <span class="friends-button-header" *ngIf="visible" (click)="toggleFriends()">✕</span>
+          <span
+            class="friends-button-header"
+            *ngIf="visible"
+            (click)="toggleFriends()"
+            >✕</span
+          >
         </div>
-        <h3 class="operator-name">
-          Chat({{friendsWidget.totalFriends}})
-        </h3>
+        <h3 class="operator-name">Chat({{ friendsWidget.totalFriends }})</h3>
       </div>
     </div>
     <div class="friends-box-main">
-      <div class="friends-message-bottom" #bottom></div>
-      <ng-container *ngFor='let user of friends; let i = index' [attr.data-index]="i">
-        <div class="friends-message" >
+      <div class="friends-list-bottom" #bottom></div>
+      <ng-container
+        *ngFor="let friend of friends; let i = index"
+        [attr.data-index]="i"
+      >
+        <div class="friends-list">
           <div>
-            <div class=" mr-3 float-left" style="display: inline-block;">
+            <div class="mr-3 float-left" style="display: inline-block">
               <div class="avatar">
-                <img src="assets/img/avatars/7.jpg" class="img-avatar" alt="youssef.tounoussi@gmail.com">
+                <friends-avatar
+                  [pictures]="friend.profile.pictures"
+                ></friends-avatar>
                 <span class="avatar-status badge-success"></span>
               </div>
             </div>
           </div>
-          <div class="text-truncate font-weight-bold" (click)='openNewChat(i)'>{{user.firstname}} {{user.lastname}}</div>
+          <div
+            class="text-truncate font-weight-bold"
+            (click)="openNewChat(friend)"
+          >
+            {{ friend.firstname }} {{ friend.lastname }}
+          </div>
 
-          <div class="friends-message-date">
+          <div class="friends-list-date">
             <!-- {{message.date | date: 'short'}} -->
           </div>
         </div>
       </ng-container>
     </div>
     <div class="friends-box-footer">
-      <friends-input (dismiss)="toggleFriends()" [focus]="focus"></friends-input>
+      <friends-input
+        (dismiss)="toggleFriends()"
+        [focus]="focus"
+      ></friends-input>
     </div>
   </div>
   <button class="friends-button" *ngIf="!visible" (click)="toggleFriends()">
-
-<span [@fadeIn]> Chat({{friendsWidget.totalFriends}})</span>
-</button>
+    <span [@fadeIn]> Chat({{ friendsWidget.totalFriends }})</span>
+  </button>
 </div>
-<aside   class="ml4 chat-widget-ul " id="listOfChatWidgets" >
+<aside class="ml4 chat-widget-ul" id="listOfChatWidgets">
   <ng-template #chatFirstWidget></ng-template>
-
 </aside>
