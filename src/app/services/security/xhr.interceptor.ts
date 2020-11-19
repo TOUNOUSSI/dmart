@@ -28,7 +28,6 @@ export class XhrInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     try {
-      console.log("interceptor called");
       let token = this.auth.getToken() as string;
       if (token != null) {
         request = request.clone({

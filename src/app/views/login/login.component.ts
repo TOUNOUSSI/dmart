@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
       localStorage.clear();
       this.authService.logIn(this.user).subscribe(
         (response) => {
-          console.log("USERNAME = " + JSON.stringify(response));
           if (response.authenticatedUser.error === undefined) {
             this.cookieService.set(
               "__psdnm_",

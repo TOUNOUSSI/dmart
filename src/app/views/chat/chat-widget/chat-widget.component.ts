@@ -133,7 +133,6 @@ export class ChatWidgetComponent implements OnInit {
   }
 
   public closeChat() {
-    console.log("close chat called id:" + this._id);
     this.cookieService.delete(this._id);
     var element = document.getElementById("chat-container-" + this._id);
     element.parentNode.removeChild(element);
@@ -180,7 +179,6 @@ export class ChatWidgetComponent implements OnInit {
       this.topic = "/topic/public-" + this.fromUser + "-" + this.toUser;
       that.stompClient.subscribe(this.topic, (message) => {
         if (message.body) {
-          console.log("Message received : " + JSON.parse(message.body));
           setTimeout(
             () =>
               this.addMessage(

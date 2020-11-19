@@ -95,8 +95,6 @@ export class FriendsWidgetComponent implements OnInit {
   // }
 
   ngOnInit() {
-    console.log("Loading friend list started ");
-
     this.messengerService.getFriends().then((res) => {
       this.friends = res;
       this.friendsWidget.totalFriends = this.friends.length;
@@ -104,7 +102,6 @@ export class FriendsWidgetComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    console.log("After view checked called");
     this.reopenChatWidgets();
   }
 
@@ -181,7 +178,6 @@ export class FriendsWidgetComponent implements OnInit {
                   ) {
                     profile.pictures.forEach((picture) => {
                       if (picture.pictureType === "PROFILE_PICTURE") {
-                        console.log("WAAAAAAAAAAAAAAAAAAAAAAAAAH ");
                         componentRef.instance.sender.avatar = this._sanitizer.bypassSecurityTrustResourceUrl(
                           "data:image/jpg;base64," + picture.data
                         );
@@ -261,7 +257,6 @@ export class FriendsWidgetComponent implements OnInit {
           if (profile.pictures !== undefined && profile.pictures.length > 0) {
             profile.pictures.forEach((picture) => {
               if (picture.pictureType === "PROFILE_PICTURE") {
-                console.log("WAAAAAAAAAAAAAAAAAAAAAAAAAH ");
                 componentRef.instance.sender.avatar = this._sanitizer.bypassSecurityTrustResourceUrl(
                   "data:image/jpg;base64," + picture.data
                 );
