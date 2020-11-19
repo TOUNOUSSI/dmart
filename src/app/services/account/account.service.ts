@@ -6,6 +6,7 @@ import { Observable, throwError } from "rxjs";
 import "rxjs";
 import { map, catchError } from "rxjs/operators";
 
+const ACCOUNT_URI = "/gmartws-core-friend";
 @Injectable()
 export class AccountService {
   userAuth: User;
@@ -22,19 +23,13 @@ export class AccountService {
 
   getSearchUsersList(criteria: string): Observable<any> {
     return this.https
-      .get(
-        AppComponent.API_URL + "/gmartws-core-friend/find-friend/" + criteria
-      )
+      .get(AppComponent.API_URL + ACCOUNT_URI + "/find-friends/" + criteria)
       .pipe(
         map((response: any) => response),
         catchError((err) => {
           return throwError(err);
         })
       );
-  }
-  signup(user: User) {
-    return this.https.post(AppComponent.API_URL + '/gmartws-core-auth/register', user)
-      .toPromise().then((response: Response) => response);
   }
 
   resetPassword(mail: string) {
@@ -46,12 +41,14 @@ export class AccountService {
   }
 
   getAllAccounts(): Observable<User[]> {
-    return this.https.get<User[]>(AppComponent.API_URL + '/gmartws-core-account/all').pipe(
-      map((response: any) => response),
-      catchError((err => {
-        return throwError(err);
-      }))
-    );
+    return this.https
+      .get<User[]>(AppComponent.API_URL + "/gmartws-core-account/all")
+      .pipe(
+        map((response: any) => response),
+        catchError((err) => {
+          return throwError(err);
+        })
+      );
   }
 
   getAllInstitutions(): Observable<any> {
@@ -88,16 +85,6 @@ export class AccountService {
   switchState(id: string) {
     return this.https
       .patch(AppComponent.API_URL + "/account/switchState", id)
-      .toPromise()
-      .then((response: Response) => response)
-      .catch((error) => {
-        return throwError(error);
-      });
-  }
-
-  logout() {
-    return this.https
-      .get(AppComponent.API_URL + "/account/logout")
       .toPromise()
       .then((response: Response) => response)
       .catch((error) => {

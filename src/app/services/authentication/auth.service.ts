@@ -11,12 +11,13 @@ import {  catchError, tap } from "rxjs/operators";
 import { of } from "rxjs";
 import { SnackbarService } from "../notifications/toaster/snackbar.service";
 
+const AUTH_URI = "/gmartws-core-auth";
 @Injectable()
 export class AuthService {
   public loggedIn$ = new BehaviorSubject<boolean>(false); // {1}
   canActivatestateChanged = false;
   tokn = "";
-
+  
   hosts: any = {};
 
   get isLoggedIn() {
@@ -32,7 +33,7 @@ export class AuthService {
   public logIn(user: User) {
     localStorage.clear();
     return this.https
-      .post(AppComponent.API_URL + "/gmartws-core-auth/authenticate", user)
+      .post(AppComponent.API_URL + AUTH_URI+"/authenticate", user)
       .pipe(
         tap((response: any) => {
           console.log("Authenticated : ");
@@ -83,8 +84,16 @@ export class AuthService {
       );
   }
 
+  signup(user: User) {
+    return this.https.post(AppComponent.API_URL + AUTH_URI+'/register', user)
+      .toPromise()
+      .then((response: Response) => response);
+  }
+
+
   isLoggedInToWebservice(): boolean {
     try {
+      console.log('isLoggedIn inti=o WebService')
       if (this.getToken() === undefined || this.getToken() === "") {
         this.canActivatestateChanged = false;
         this.loggedIn$.next(false);
@@ -133,15 +142,16 @@ export class AuthService {
     localStorage.clear();
     this.loggedIn$.next(false);
     this.logout();
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/signin"]);
   }
+
   logout() {
     return this.https
-      .get(AppComponent.API_URL + "/account/logout")
+      .get(AppComponent.API_URL + AUTH_URI+"/logout")
       .toPromise()
       .then((response: Response) => response)
       .catch((error) => {
-        this.router.navigate(["/login"]);
+        this.router.navigate(["/signin"]);
       });
   }
 }
