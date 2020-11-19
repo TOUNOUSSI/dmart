@@ -20,6 +20,5 @@ import { ChatModule, ChatWidgetComponent } from "../chat";
     FriendsConfigComponent,
     ChatWidgetComponent,
   ],
-  providers: [Crypto],
 })
 export class FriendsModule {}
