@@ -4,6 +4,7 @@ import { User } from 'src/app/models/user.model';
 import { AccountService } from 'src/app/services/account/account.service';
 import { SnackbarService } from 'src/app/services/notifications/toaster/snackbar.service';
 import { ErrorStateMatcher } from '@angular/material';
+import { AuthService } from 'src/app/services/authentication/auth.service';
 
 @Component({
   selector: 'gmart-registration',
@@ -23,7 +24,7 @@ export class RegistrationComponent implements OnInit, ErrorStateMatcher {
   formSubmitted: Boolean = false
   matcher = new MyErrorStateMatcher();
 
-  constructor(private accountService: AccountService, private toasterService: SnackbarService) { }
+  constructor(private accountService: AccountService, private authService: AuthService, private toasterService: SnackbarService) { }
 
 
   ngOnInit() {
@@ -62,7 +63,7 @@ export class RegistrationComponent implements OnInit, ErrorStateMatcher {
   }
 
   register() {
-    this.accountService.signup(this.user).then(
+    this.authService.signup(this.user).then(
       res => {
         this.toasterService.message = "User '"+this.user.username+"' was successfully added!";
         this.toasterService.open();
