@@ -36,9 +36,8 @@ import { RegistrationComponent } from "./views/registration/registration.compone
 import { SplashscreenComponent } from "./views/splashscreen/splashscreen.component";
 import { LoginComponent } from "./views/login/login.component";
 import { SearchModule } from "./views/core/search";
-import { ModalModule } from "ngx-bootstrap/modal";
-import { CookieService } from 'ngx-cookie-service';
-import { ChatModule } from './views/chat';
+import { CookieService } from "ngx-cookie-service";
+import { DmartCryptoService } from "./services/dmart-cryptography/dmart-crypto.service";
 
 @NgModule({
   declarations: [
@@ -46,8 +45,7 @@ import { ChatModule } from './views/chat';
     LoginComponent,
     RegistrationComponent,
     DefaultLayoutComponent,
-   SplashscreenComponent
-
+    SplashscreenComponent,
   ],
   imports: [
     CommonModule,
@@ -68,17 +66,27 @@ import { ChatModule } from './views/chat';
     AppBreadcrumbModule,
     AppSidebarModule,
     FriendsModule,
-    SearchModule
+    SearchModule,
   ],
   entryComponents: [],
 
-  providers: [CookieService, WebSocketAPI, AuthService, AccountService, UrlPermission, AuthGuard, AnonymousGuardService, SnackbarService,
+  providers: [
+    CookieService,
+    DmartCryptoService,
+    WebSocketAPI,
+    AuthService,
+    AccountService,
+    UrlPermission,
+    AuthGuard,
+    AnonymousGuardService,
+    SnackbarService,
     { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },
     {
       provide: STEPPER_GLOBAL_OPTIONS,
-      useValue: { displayDefaultIndicatorType: false }
-    }],
+      useValue: { displayDefaultIndicatorType: false },
+    },
+  ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

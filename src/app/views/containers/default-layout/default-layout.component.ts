@@ -1,18 +1,16 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
-import { AnonymousGuardService } from "src/app/services/url-permission/anonymous-auth.guard";
+import { Router } from "@angular/router";
 import { AccountService } from "src/app/services/account/account.service";
 import { AuthService } from "src/app/services/authentication/auth.service";
 import { navItems } from "../../../_nav";
 import { Observable } from "rxjs";
 import { User } from "src/app/models/user.model";
-import { ProfileComponent } from "../../admin/profile/profile.component";
 import { SafeResourceUrl, DomSanitizer } from "@angular/platform-browser";
 import { ProfileService } from "src/app/services/profile/profile.service";
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
-import { WebSocketAPI } from 'src/app/websocket-api';
-import { map, startWith } from 'rxjs/operators';
-import { FormControl, FormGroup } from '@angular/forms';
+import { WebSocketAPI } from "src/app/websocket-api";
+import { map, startWith } from "rxjs/operators";
+import { FormControl, FormGroup } from "@angular/forms";
+import { CookieService } from "ngx-cookie-service";
 
 @Component({
   selector: "app-dashboard",
@@ -20,11 +18,8 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ["./default-layout.component.scss"],
 })
 export class DefaultLayoutComponent implements OnInit {
- 
- 
-  theme: 'red';
+  theme: "red";
   name: string;
-
 
   public sidebarMinimized = true;
   public navItems = navItems;
@@ -35,7 +30,7 @@ export class DefaultLayoutComponent implements OnInit {
   myFormGroup: FormGroup;
   searchHistory: string[] = [];
   filteredOptions: Observable<string[]>;
-  fromSearchHistory: string[] =new Array();
+  fromSearchHistory: string[] = new Array();
 
   public initNavItems: Array<any>;
   msgConfirmation: string = "Vous êtes déconnecté.";
@@ -45,25 +40,42 @@ export class DefaultLayoutComponent implements OnInit {
 
   public profileAvatar: SafeResourceUrl;
 
+  constructor(
+    private accountservice: AccountService,
+    private authenticationService: AuthService,
+    private cookieService: CookieService,
+    private webSocketAPI: WebSocketAPI,
+    private router: Router,
+    private profileService: ProfileService,
+    private _sanitizer: DomSanitizer
+  ) {
+    this.changes = new MutationObserver((mutations) => {
+      this.sidebarMinimized = document.body.classList.contains(
+        "sidebar-minimized"
+      );
+    });
+    this.changes.observe(<Element>this.element, {
+      attributes: true,
+    });
+  }
 
-  connect(){
+  connect() {
     this.webSocketAPI._connect();
   }
 
-  disconnect(){
+  disconnect() {
     this.webSocketAPI._disconnect();
   }
 
-  sendMessage(){
-    this.webSocketAPI._send(this.name)
+  sendMessage() {
+    this.webSocketAPI._send(this.name);
     this.handleMessage();
   }
 
-  handleMessage(){
-    console.log("Message handled")
-    console.log("response from observable here "+  this.webSocketAPI.message)
+  handleMessage() {
+    console.log("Message handled");
+    console.log("response from observable here " + this.webSocketAPI.message);
   }
-
 
   toggleMinimize(e) {
     this.sidebarMinimized = e;
@@ -81,48 +93,32 @@ export class DefaultLayoutComponent implements OnInit {
     }
   }
 
-  constructor(
-    private accountservice: AccountService,
-    private webSocketAPI : WebSocketAPI,
-    private router: Router,
-    private profileService: ProfileService,
-    private _sanitizer: DomSanitizer
-  ) {
-    this.changes = new MutationObserver((mutations) => {
-      this.sidebarMinimized = document.body.classList.contains(
-        "sidebar-minimized"
-      );
-    });
-    this.changes.observe(<Element>this.element, {
-      attributes: true,
-    });
-  }
-
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    this.fromSearchHistory = this.searchHistory.filter(option => {
-      option.toLowerCase().includes(filterValue)
+    this.fromSearchHistory = this.searchHistory.filter((option) => {
+      option.toLowerCase().includes(filterValue);
     });
 
-    if(this.fromSearchHistory.length ==0 ){
-      this.accountservice.getAllAccounts().toPromise().then(
-       users => {
-         alert(users)
-       });
-    }else{
+    if (this.fromSearchHistory.length == 0) {
+      this.accountservice
+        .getAllAccounts()
+        .toPromise()
+        .then((users) => {
+          alert(users);
+        });
+    } else {
       return this.fromSearchHistory;
     }
   }
 
   ngOnInit() {
     this.myFormGroup = new FormGroup({
-      search: new FormControl()
+      search: new FormControl(),
     });
-    this.filteredOptions = this.myFormGroup.get('search').valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
+    this.filteredOptions = this.myFormGroup.get("search").valueChanges.pipe(
+      startWith(""),
+      map((value) => this._filter(value))
+    );
     this.profileService.getMyProfile().subscribe((profile) => {
       this.myProfile = profile;
       console.log("Inside Default layout profile loading ... ");
@@ -138,7 +134,7 @@ export class DefaultLayoutComponent implements OnInit {
       } else {
         // In case there's no cover load the default GMART cover
         this.profileAvatar = this._sanitizer.bypassSecurityTrustResourceUrl(
-          "data:image/jpg;" + "../../../../assets/img/avatars/6.jpg"
+          "../../../../assets/img/avatars/avatar-default.png"
         );
       }
     });
@@ -146,12 +142,13 @@ export class DefaultLayoutComponent implements OnInit {
 
   onOpenMyProfile(pseudoname) {
     this.router.navigateByUrl("/admin/profile/" + pseudoname);
-   
   }
   doLogout() {
     if (confirm("Voulez vous vraiment vous déconnecter?")) {
       localStorage.clear();
-      this.accountservice.logout();
+      sessionStorage.clear();
+      this.cookieService.deleteAll();
+      this.authenticationService.logout();
       this.router.navigate(["/signin"]);
     }
   }
