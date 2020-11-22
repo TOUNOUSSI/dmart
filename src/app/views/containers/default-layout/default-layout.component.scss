@@ -1,45 +1,71 @@
+$breakpoint-device-down : "max-width:414px";
+$breakpoint-device-up : "min-width:414px";
+
+//Small devices 
+@media only screen and ($breakpoint-device-down) {
+  .search-box-inlined {
+    width: 50%;
+    position: absolute;
+    z-index: 1;
+    margin-left: 87px;
+  }
+}
+
+//Large screens 
+@media only screen and ($breakpoint-device-up) {
+  .search-box-inlined {
+    text-align: center;
+  }
+}
+
 .app-toolbar {
   position: sticky;
-  position: -webkit-sticky; /* For macOS/iOS Safari */
-  top: 0; /* Sets the sticky toolbar to be on top */
-  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+  position: -webkit-sticky;
+  /* For macOS/iOS Safari */
+  top: 0;
+  /* Sets the sticky toolbar to be on top */
+  z-index: 1000;
+  /* Ensure that your app's content doesn't overlap the toolbar */
 }
+
 .icon {
-    transition: transform .2s; /* Animation */
-    margin: 0 auto;
+  transition: transform .2s;
+  /* Animation */
+  margin: 0 auto;
+}
+
+
+
+.navigation-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+mat-toolbar {
+  border-radius: 3px;
+}
+
+@media(max-width: 959px) {
+  mat-toolbar {
+    border-radius: 0px;
   }
-  
-
- 
-.navigation-items{
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
- 
-mat-toolbar{
-    border-radius: 3px;
-}
- 
-@media(max-width: 959px){
-    mat-toolbar{
-        border-radius: 0px;
-    }
 }
 
-.nav-caption{
-    display: inline-block;
-    padding-left: 6px;
+.nav-caption {
+  display: inline-block;
+  padding-left: 6px;
 }
 
 .white-icon {
-    color: white;
+  color: white;
 }
+
 /* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
 .white-icon svg {
-    fill: white;
+  fill: white;
 }
 
 .col-lg-10 {
-    width: 700px;
+  width: 700px;
 }

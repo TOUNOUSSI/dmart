@@ -1,3 +1,5 @@
+$breakpoint-device-up:"min-width:414px";
+
 .app-header {
   position: relative;
   flex-direction: row;
@@ -20,7 +22,7 @@
     @include borders($navbar-brand-border);
 
     .navbar-brand-minimized {
-      display: none;
+      display: block;
     }
   }
 
@@ -38,11 +40,25 @@
     background-image: $navbar-toggler-icon;
   }
 
-  .navbar-nav {
-    flex-direction: row;
-    align-items: center;
-    overflow-x: hidden;
+  @media only screen and ($breakpoint-device-up) {
 
+
+    .navbar-nav {
+      flex-direction: row;
+      align-items: center;
+      overflow-x: hidden;
+
+    }
+  }
+
+  @media only screen and ($breakpoint-device-up) {
+
+
+    .navbar-nav {
+      position: absolute;
+      overflow-x: hidden;
+
+    }
   }
 
   .nav-item {
@@ -69,7 +85,7 @@
         margin-left: 0;
       }
 
-      > .img-avatar {
+      >.img-avatar {
         height: $navbar-height - 20px;
         margin: 0 10px;
       }
@@ -103,8 +119,8 @@
     }
   }
 
-  .open > .nav-link,
-  .active > .nav-link,
+  .open>.nav-link,
+  .active>.nav-link,
   .nav-link.open,
   .nav-link.active {
     @include plain-hover-focus {

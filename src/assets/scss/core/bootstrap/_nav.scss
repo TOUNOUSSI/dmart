@@ -2,13 +2,17 @@
 //
 // Kickstart any navigation component with a set of style resets. Works with
 // `<nav>`s or `<ul>`s.
+$breakpoint-device-up : "min-width:414px";
 
-.nav {
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
+@media only screen and ($breakpoint-device-up) {
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+  }
 }
 
 .nav-link {
@@ -79,7 +83,7 @@
   }
 
   .nav-link.active,
-  .show > .nav-link {
+  .show>.nav-link {
     color: $nav-pills-link-active-color;
     background-color: $nav-pills-link-active-bg;
   }
@@ -111,10 +115,11 @@
 // Hide tabbable panes to start, show them when `.active`
 
 .tab-content {
-  > .tab-pane {
+  >.tab-pane {
     display: none;
   }
-  > .active {
+
+  >.active {
     display: block;
   }
 }

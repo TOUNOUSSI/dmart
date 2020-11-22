@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, HostListener, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 import { AccountService } from "src/app/services/account/account.service";
 import { AuthService } from "src/app/services/authentication/auth.service";
@@ -11,11 +11,14 @@ import { WebSocketAPI } from "src/app/websocket-api";
 import { map, startWith } from "rxjs/operators";
 import { FormControl, FormGroup } from "@angular/forms";
 import { CookieService } from "ngx-cookie-service";
+import { ClassToggler } from "../../core/shared/toggle-classes";
+import { sidebarCssClasses } from "../classes";
 
 @Component({
   selector: "app-dashboard",
   templateUrl: "./default-layout.component.html",
   styleUrls: ["./default-layout.component.scss"],
+  providers: [ClassToggler],
 })
 export class DefaultLayoutComponent implements OnInit {
   theme: "red";
@@ -47,7 +50,8 @@ export class DefaultLayoutComponent implements OnInit {
     private webSocketAPI: WebSocketAPI,
     private router: Router,
     private profileService: ProfileService,
-    private _sanitizer: DomSanitizer
+    private _sanitizer: DomSanitizer,
+    private classToggler: ClassToggler
   ) {
     this.changes = new MutationObserver((mutations) => {
       this.sidebarMinimized = document.body.classList.contains(
@@ -155,5 +159,28 @@ export class DefaultLayoutComponent implements OnInit {
 
   openDatasourceDialog() {
     console.log("Open dialog called");
+  }
+
+  defaultTouch = { x: 0, y: 0, time: 0 };
+
+  @HostListener("swiperight", ["$event"])
+  public swipeRightHandler(event) {
+    console.log("event " + event.type + " listener");
+    document.querySelector("body").classList.add("sidebar-show");
+    document.querySelector("body").classList.remove("aside-menu-show");
+  }
+
+  @HostListener("click", ["$event"])
+  public clickHandler(event) {
+    console.log("event " + event.type + " listener");
+    document.querySelector("body").classList.remove("sidebar-show");
+    document.querySelector("body").classList.remove("aside-menu-show");
+  }
+
+  @HostListener("swipeleft", ["$event"])
+  public swipeLeftHandler(event) {
+    console.log("event " + event.type + " listener");
+    document.querySelector("body").classList.add("aside-menu-show");
+    document.querySelector("body").classList.remove("sidebar-show");
   }
 }

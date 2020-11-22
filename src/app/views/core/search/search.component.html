@@ -1,49 +1,51 @@
-<label
-  [@openClose]="isOpen ? 'open' : 'closed'"
-  class="search-change-inactive"
-  id="search-icon"
-  for="inpt_search"
-  (mouseenter)="onMouseEnter()"
-  (mouseleave)="onMouseLeave()"
->
-  <input
-    id="inpt_search"
-    type="text"
-    placeholder=""
-    autocomplete="off"
-    (input)="onSearchFriend($event.target.value)"
-  />
-</label>
-
-<ul
-  class="nav navbar-nav d-md-down-none"
-  style="position: absolute; width: 100%"
->
-  <li
-    class="search-item form-control"
-    *ngFor="let usr of matchingUsers; let i; index"
+<div class="search-col-s-1">
+  <label
+    [@openClose]="isOpen ? 'open' : 'closed'"
+    class="search-change-inactive"
+    id="search-icon"
+    for="inpt_search"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
   >
-    <a [routerLink]="['/admin/profile', usr.profile.pseudoname]">
-      <div class="search-box-header">
-        <search-avatar
-          [id]="usr.username"
-          [pictures]="usr.profile.pictures"
-          [styles]="['search-box-avatar']"
-        >
-        </search-avatar>
-        <h3 class="operator-name">
-          {{ usr.username }}
-        </h3>
+    <input
+      id="inpt_search"
+      type="text"
+      placeholder=""
+      autocomplete="off"
+      (input)="onSearchFriend($event.target.value)"
+    />
+  </label>
+
+  <ul
+    class="nav navbar-nav d-md-down-none"
+    style="position: absolute; width: 100%"
+  >
+    <li
+      class="search-item form-control"
+      *ngFor="let usr of matchingUsers; let i; index"
+    >
+      <a [routerLink]="['/admin/profile', usr.profile.pseudoname]">
+        <div class="search-box-header">
+          <search-avatar
+            [id]="usr.username"
+            [pictures]="usr.profile.pictures"
+            [styles]="['search-box-avatar']"
+          >
+          </search-avatar>
+          <h3 class="operator-name">
+            {{ usr.username }}
+          </h3>
+        </div>
+      </a>
+    </li>
+
+    <li
+      class="form-control"
+      *ngIf="matchingUsers !== undefined && matchingUsers.length !== 0"
+    >
+      <div class="search-box-footer">
+        <a href="#" name="search"><i class="material-icons">search</i></a>
       </div>
-    </a>
-  </li>
-
-  <li
-    class="form-control"
-    *ngIf="matchingUsers !== undefined && matchingUsers.length !== 0"
-  >
-    <div class="search-box-footer">
-      <a href="#" name="search"><i class="material-icons">search</i></a>
-    </div>
-  </li>
-</ul>
+    </li>
+  </ul>
+</div>

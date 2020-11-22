@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { User } from "src/app/models/user.model";
 import { AccountService } from "src/app/services/account/account.service";
-import { EventEmitter } from "protractor";
 import {
   trigger,
   state,
@@ -12,7 +11,6 @@ import {
 import { Router } from "@angular/router";
 
 const rand = (max) => Math.floor(Math.random() * max);
-
 @Component({
   selector: "dmart-search",
   templateUrl: "./search.component.html",
@@ -38,8 +36,14 @@ const rand = (max) => Math.floor(Math.random() * max);
   ],
 })
 export class SearchComponent implements OnInit {
+  @Input("styles")
+  public styles: string[];
+
+  @Output() public searchCssChange: EventEmitter<any> = new EventEmitter();
+  @Input("search_id") public id: string;
+
   matchingUsers: User[];
-  isOpen:boolean = false;
+  isOpen: boolean = false;
   public operator = {
     name: "Chat(22)",
     status: "online",
@@ -116,6 +120,18 @@ export class SearchComponent implements OnInit {
 
       input.placeholder = "";
       input.value = "";
+    }
+  }
+
+  ngAfterViewInit(): void {
+    if (this.styles !== undefined && this.styles.length !== 0) {
+      let imageElem = document.getElementById(this.id) as HTMLElement;
+
+      this.styles.forEach((element) => {
+        imageElem.classList.remove("search");
+        imageElem.classList.add(element);
+        this.searchCssChange.emit(element);
+      });
     }
   }
 }

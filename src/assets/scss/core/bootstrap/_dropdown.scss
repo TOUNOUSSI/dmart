@@ -13,6 +13,18 @@
   @include caret;
 }
 
+@media only screen and (max-width : "414px") {
+  .dropdown-small-device {
+    left: 10%;
+    /* width: 107%; */
+    margin-top: 25%;
+    right: 0px;
+    display: inline-table;
+    /* flex-direction: column; */
+    /* flex: none; */
+  }
+}
+
 // The dropdown menu
 .dropdown-menu {
   position: absolute;
@@ -77,6 +89,7 @@
 
   .dropdown-toggle {
     @include caret(right);
+
     &::after {
       vertical-align: 0;
     }
@@ -94,6 +107,7 @@
 
   .dropdown-toggle {
     @include caret(left);
+
     &::before {
       vertical-align: 0;
     }
@@ -103,6 +117,7 @@
 // When enabled Popper.js, reset basic dropdown position
 // stylelint-disable-next-line no-duplicate-selectors
 .dropdown-menu {
+
   &[x-placement^="top"],
   &[x-placement^="right"],
   &[x-placement^="bottom"],
@@ -134,7 +149,7 @@
 
   // Prevent dropdown overflow if there's no padding
   // See https://github.com/twbs/bootstrap/pull/27703
-  @if $dropdown-padding-y == 0 {
+  @if $dropdown-padding-y==0 {
     &:first-child {
       @include border-top-radius($dropdown-inner-border-radius);
     }
@@ -162,6 +177,7 @@
     color: $dropdown-link-disabled-color;
     pointer-events: none;
     background-color: transparent;
+
     // Remove CSS gradients if they're enabled
     @if $enable-gradients {
       background-image: none;
