@@ -15,6 +15,7 @@ $breakpoint-device-up : "min-width:414px";
 @media only screen and ($breakpoint-device-up) {
   .search-box-inlined {
     text-align: center;
+    margin-left: auto;
   }
 }
 
