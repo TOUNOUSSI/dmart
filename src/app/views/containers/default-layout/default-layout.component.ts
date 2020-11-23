@@ -1,4 +1,12 @@
-import { Component, HostListener, OnInit, ViewChild } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  HostListener,
+  OnInit,
+  Output,
+  ViewChild,
+} from "@angular/core";
 import { Router } from "@angular/router";
 import { AccountService } from "src/app/services/account/account.service";
 import { AuthService } from "src/app/services/authentication/auth.service";
@@ -12,7 +20,6 @@ import { map, startWith } from "rxjs/operators";
 import { FormControl, FormGroup } from "@angular/forms";
 import { CookieService } from "ngx-cookie-service";
 import { ClassToggler } from "../../core/shared/toggle-classes";
-import { sidebarCssClasses } from "../classes";
 
 @Component({
   selector: "app-dashboard",
@@ -20,10 +27,10 @@ import { sidebarCssClasses } from "../classes";
   styleUrls: ["./default-layout.component.scss"],
   providers: [ClassToggler],
 })
-export class DefaultLayoutComponent implements OnInit {
+export class DefaultLayoutComponent implements OnInit, AfterViewInit {
+  @Output() public idEmitter: EventEmitter<any> = new EventEmitter();
   theme: "red";
   name: string;
-
   public sidebarMinimized = true;
   public navItems = navItems;
   public matchingUsers: User[] = [];
@@ -61,6 +68,10 @@ export class DefaultLayoutComponent implements OnInit {
     this.changes.observe(<Element>this.element, {
       attributes: true,
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.idEmitter.emit(this.search_id);
   }
 
   connect() {

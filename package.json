@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron": "ng build && electron .",
-    "postinstall": "ng build --prod --aot"
+    "postinstall": "ng build --prod --aot --buildOptimizer --commonChunk --extractLicenses --optimization"
   },
   "private": true,
   "dependencies": {

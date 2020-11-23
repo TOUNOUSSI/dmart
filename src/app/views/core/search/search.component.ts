@@ -122,16 +122,4 @@ export class SearchComponent implements OnInit {
       input.value = "";
     }
   }
-
-  ngAfterViewInit(): void {
-    if (this.styles !== undefined && this.styles.length !== 0) {
-      let imageElem = document.getElementById(this.id) as HTMLElement;
-
-      this.styles.forEach((element) => {
-        imageElem.classList.remove("search");
-        imageElem.classList.add(element);
-        this.searchCssChange.emit(element);
-      });
-    }
-  }
 }
