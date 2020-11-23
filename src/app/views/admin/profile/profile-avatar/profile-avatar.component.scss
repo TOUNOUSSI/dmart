@@ -1,37 +1,28 @@
-//Devices 
+//Larger 
 @media only screen and (min-width: 415px) {
+  .avatar {
+    height: 100%;
+    width: 100%;
+  }
 
   .search-box-avatar {
-    height: 27px;
 
-    width: 27px;
-
-    border-radius: 20%;
-
-    float: left;
-
-    position: relative;
-
-    margin: -1px 6px 2px 1px;
-  }
-
-  .avatar {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    float: left;
-    margin-right: 10px;
-  }
-
-  .profile-box-avatar {
-    border-radius: 100px;
-    position: relative;
-    height: 46%;
     background: border-box;
     padding: -1px;
     border: 4px solid #2a2a2a;
-    width: 167px;
-    height: 167px;
+    /* margin-left: -4px; */
+    margin-top: 74px;
+    align-content: center;
+    transform: scaleX(2) scaleY(2);
+    z-index: 6;
+    padding: -105px -105px;
+  }
+
+  .profile-box-avatar {
+    position: relative;
+    background: border-box;
+    padding: -1px;
+    border: 4px solid #2a2a2a;
     margin-left: 53px;
     margin-top: -48px;
     -webkit-transform: scaleX(2) scaleY(1.5);
@@ -46,18 +37,13 @@
 //Devices 
 @media only screen and (max-width: 414px) {
   .avatar {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    float: left;
-    margin-right: 10px;
+    height: 100%;
+    width: 100%;
   }
 
   .profile-box-avatar {
     /*border-radius: 12px; */
     position: relative;
-    margin-left: 53px;
-    margin-top: -48px;
     /* margin-bottom: 5223px; */
     left: 0;
     top: 0;

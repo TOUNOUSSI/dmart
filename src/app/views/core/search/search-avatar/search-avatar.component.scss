@@ -1,6 +1,3 @@
-//Devices 
-@media only screen and (min-width: 415px) {
-
   .search-box-avatar {
     height: 27px;
 
@@ -22,38 +19,3 @@
     float: left;
     margin-right: 10px;
   }
-
-}
-
-//Devices 
-@media only screen and (max-width: 414px) {
-  .avatar {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    float: left;
-    margin-right: 10px;
-  }
-
-  .search-box-avatar {
-    /*border-radius: 12px; */
-    position: relative;
-    margin-left: 53px;
-    margin-top: -48px;
-    /* margin-bottom: 5223px; */
-    left: 0;
-    top: 0;
-    /* background: border-box; */
-    padding: -1px;
-    border: 0x solid #fff;
-    height: 145px;
-    width: 145px;
-    border: white;
-    -webkit-transform: scaleX(2) scaleY(1.5);
-    transform: scaleX(2) scaleY(4);
-    /* padding-top: 37px; */
-    z-index: 6;
-    padding: -105px -105px;
-    /* padding-left: 41px;*/
-  }
-}

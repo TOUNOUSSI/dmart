@@ -406,12 +406,104 @@
     font-size: 21px;
     top: 26px;
   }
+
+
+
+  .edit-profile-pic-container {
+    position: absolute;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #d6d2d26b;
+    height: 34px;
+    width: 34px;
+    top: 96%;
+    left: 53%;
+    z-index: 10;
+  }
+
+  .profile-picture-avatar-fontawsome {
+    position: absolute;
+    top: 87%;
+    left: -11px;
+    z-index: 999;
+  }
 }
 
 
 
 //Maximum device width 414px such as Iphone X Screen size  
 @media only screen and (max-width : 414px) {
+  .save-profile-cover-div-inlined {
+    z-index: 1;
+    position: absolute;
+    right: 0px;
+    width: 100%;
+    display: inline-block;
+    height: 12%;
+    background-color: rgba(5, 5, 5, 0.534);
+    padding: 3px 3px;
+  }
+
+  .save-profile-cover-paragraph {
+    padding-right: 12px;
+    padding-left: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    color: white;
+
+  }
+
+
+
+  .save-profile-cover-paragraph-i {
+    padding-top: 6px;
+    padding-right: 12px;
+    padding-left: 12px;
+    font-size: 27px;
+    font-weight: bold;
+    display: inline-block;
+    color: white;
+    top: 17%;
+    position: relative;
+  }
+
+  .save-profile-cover-paragraph>span {
+
+    /* bottom: 17px; */
+    top: 11px;
+    /* padding: 0 0; */
+    /* margin: 0; */
+    position: absolute;
+  }
+
+  .save-profile-cover-btn-success {
+    float: right;
+    /* right: 14px; */
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 5px;
+    align-items: center;
+    align-content: center;
+    top: 3%;
+    position: relative;
+  }
+
+  .save-profile-cover-btn-cancel {
+    float: right;
+    /* right: 14px; */
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 5px;
+    align-items: center;
+    align-content: center;
+    top: 3%;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.219);
+    border: 0;
+    color: white;
+  }
+
   .card {
     background-color: transparent;
     border: 0;
@@ -721,23 +813,23 @@
   }
 
 
-}
+  .edit-profile-pic-container {
+    position: absolute;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #d6d2d26b;
+    height: 34px;
+    width: 34px;
+    top: 96%;
+    left: 61%;
+    z-index: 10;
+  }
 
-.edit-profile-pic-container {
-  position: absolute;
-  align-items: center;
-  border-radius: 50%;
-  background-color: #d6d2d26b;
-  height: 34px;
-  width: 34px;
-  top: 96%;
-  left: 53%;
-  z-index: 10;
-}
+  .profile-picture-avatar-fontawsome {
+    position: absolute;
+    top: 39%;
+    left: -8px;
+    z-index: 999;
+  }
 
-.profile-picture-avatar-fontawsome {
-  position: absolute;
-  top: 87%;
-  left: -11px;
-  z-index: 999;
 }
