@@ -582,7 +582,7 @@
     background-color: transparent;
     z-index: -1;
     height: 100%;
-    width: 100%;
+    width: 110%;
     -webkit-transform: scaleX(2) scaleY(1.5);
     transform: scaleX(1) scaleY(2);
     padding-top: 37px;
@@ -800,6 +800,7 @@
     font-size: 12px;
     font-weight: bold;
     display: initial;
+    z-index: 11;
   }
 
   .change-cover-browser-btn {
@@ -811,7 +812,7 @@
     bottom: 10px;
     font-size: 16px;
     padding: 0 0 0 0px;
-    z-index: 1;
+    z-index: 12;
     cursor: pointer;
     visibility: hidden;
   }
@@ -826,14 +827,14 @@
     width: 34px;
     top: 96%;
     left: 61%;
-    z-index: 2;
+    z-index: 6;
   }
 
   .profile-picture-avatar-fontawsome {
     position: absolute;
     top: 39%;
     left: -8px;
-    z-index: 999;
+    z-index: 6;
   }
 
 }
