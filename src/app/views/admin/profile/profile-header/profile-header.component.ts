@@ -49,7 +49,7 @@ export class ProfileHeaderComponent implements OnInit {
   ngOnInit() {
     if (
       window.innerWidth <= 514 &&
-      this.pseudoname !== localStorage.get("__psdnm_")
+      this.pseudoname !== localStorage.getItem("__psdnm_")
     ) {
       this.isMyProfile = false;
     }
@@ -60,7 +60,7 @@ export class ProfileHeaderComponent implements OnInit {
     ) {
       this.isMyProfile = false;
     }
-    if (this.pseudoname !== localStorage.get("__psdnm_")) {
+    if (this.pseudoname !== localStorage.getItem("__psdnm_")) {
       this.isMyProfile = false;
     }
     this.messengerService.AreWeAlreadyFriend(this.pseudoname).then((resp) => {
