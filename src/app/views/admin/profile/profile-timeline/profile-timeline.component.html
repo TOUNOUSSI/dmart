@@ -4,15 +4,11 @@
       <div class="profile-timeline-col-left">
         <div class="box image">
           <div class="box-header">
-            <h3 style="color: seashell;margin-bottom: -27px;">
-              Intro
-            </h3>
+            <h3 style="color: seashell; margin-bottom: -27px">Intro</h3>
             <div>
               <div class="profile-intro-simple-line-row">
                 <i class="fa fa-graduation-cap profile-intro-fontawsome"></i>
-                <span class="profile-intro-span" dir="auto">
-                  Studied at
-                </span>
+                <span class="profile-intro-span" dir="auto"> Studied at </span>
                 <a class="profile-intro-a" href="" role="link" tabindex="0">
                   <span class="profile-intro-single-row-span">
                     Ecole supérieure de technologie d'Essaouira
@@ -22,9 +18,7 @@
 
               <div class="profile-intro-multiple-line-row">
                 <i class="fa fa-graduation-cap profile-intro-fontawsome"></i>
-                <span class="profile-intro-span" dir="auto">
-                  Goes to
-                </span>
+                <span class="profile-intro-span" dir="auto"> Goes to </span>
                 <a class="profile-intro-a" href="" role="link" tabindex="0">
                   <span class="profile-intro-multiple-row-span">
                     Ecole Marocaine de Sciences de l'Igénieur(Page Officielle)
@@ -34,9 +28,7 @@
 
               <div class="profile-intro-simple-line-row">
                 <i class="fa fa-home profile-intro-fontawsome"></i>
-                <span class="profile-intro-span" dir="auto">
-                  Studied at
-                </span>
+                <span class="profile-intro-span" dir="auto"> Studied at </span>
                 <a class="profile-intro-a" href="" role="link" tabindex="0">
                   <span class="profile-intro-single-row-span">
                     Ecole supérieure de technologie d'Essaouira
@@ -46,9 +38,7 @@
 
               <div class="profile-intro-simple-line-row">
                 <i class="fa fa-map-marker profile-intro-fontawsome"></i>
-                <span class="profile-intro-span" dir="auto">
-                  Studied at
-                </span>
+                <span class="profile-intro-span" dir="auto"> Studied at </span>
 
                 <a class="profile-intro-a" href="" role="link" tabindex="0">
                   <span class="profile-intro-single-row-span">
@@ -58,9 +48,7 @@
               </div>
               <div class="profile-intro-simple-line-row">
                 <i class="fa fa-heart profile-intro-fontawsome"></i>
-                <span class="profile-intro-span" dir="auto">
-                  Studied at
-                </span>
+                <span class="profile-intro-span" dir="auto"> Studied at </span>
 
                 <a class="profile-intro-a" href="" role="link" tabindex="0">
                   <span class="profile-intro-single-row-span">
@@ -70,9 +58,7 @@
               </div>
               <div class="profile-intro-simple-line-row">
                 <i class="fa fa-rss profile-intro-fontawsome"></i>
-                <span class="profile-intro-span" dir="auto">
-                  Studied at
-                </span>
+                <span class="profile-intro-span" dir="auto"> Studied at </span>
                 <a class="profile-intro-a" href="" role="link" tabindex="0">
                   <span class="profile-intro-single-row-span">
                     Ecole supérieure de technologie d'Essaouira
@@ -87,14 +73,21 @@
         <div class="box image" *ngIf="isMyProfile">
           <div class="box-header">
             <div class="box-avatar">
-              <img [src]="profileImageAvatar" alt="{{ loadedProfile.firstname }} {{ loadedProfile.lastname }}" />
+              <img
+                [src]="profileImageAvatar"
+                alt="{{ loadedProfile.firstname }} {{ loadedProfile.lastname }}"
+              />
             </div>
           </div>
 
-          <div class="box-new-post" >
+          <div class="box-new-post">
             <div class="content">
               <div class="content-row">
-                <button data-target="#details" data-toggle="modal" (click)="openDialog()">
+                <button
+                  data-target="#details"
+                  data-toggle="modal"
+                  (click)="openDialog()"
+                >
                   <textarea placeholder="What's in your head ?"></textarea>
                 </button>
               </div>
@@ -107,10 +100,12 @@
                 <span class="box-buttons-font"> Live</span>
               </button>
               <button>
-                <i class="fa fa-picture-o"></i><span class="box-buttons-font"> Photo/Video</span>
+                <i class="fa fa-picture-o"></i
+                ><span class="box-buttons-font"> Photo/Video</span>
               </button>
               <button>
-                <i class="fa fa-flag"></i><span class="box-buttons-font"> Life Event</span>
+                <i class="fa fa-flag"></i
+                ><span class="box-buttons-font"> Life Event</span>
               </button>
             </div>
           </div>
@@ -119,13 +114,21 @@
         <div class="box image">
           <div class="box-header">
             <h3>
-              <img [src]="profileImageAvatar" alt="{{ loadedProfile.firstname }} {{ loadedProfile.lastname }}" />
+              <img
+                [src]="profileImageAvatar"
+                alt="{{ loadedProfile.firstname }} {{ loadedProfile.lastname }}"
+              />
               <a [routerLink]="['/admin/profile/', loadedProfile.pseudoname]">
                 {{ loadedProfile.firstname }}
-                {{ loadedProfile.lastname }}</a>
-              <span style="padding-top: 14px;">March 21,18:45pm <i class="fa fa-globe"></i></span>
+                {{ loadedProfile.lastname }}</a
+              >
+              <span style="padding-top: 14px"
+                >March 21,18:45pm <i class="fa fa-globe"></i
+              ></span>
             </h3>
-            <span style="background-color: transparent;"><i class="fa fa-angle-down"></i></span>
+            <span style="background-color: transparent"
+              ><i class="fa fa-angle-down"></i
+            ></span>
             <div class="window"><span></span></div>
           </div>
           <div class="box-content">
@@ -139,9 +142,15 @@
           </div>
           <div class="box-likes">
             <div class="row">
-              <span><a href="#"><img src="https://goo.gl/oM0Y8G" alt="" /></a></span>
-              <span><a href="#"><img src="https://goo.gl/vswgSn" alt="" /></a></span>
-              <span><a href="#"><img src="https://goo.gl/4W27eB" alt="" /></a></span>
+              <span
+                ><a href="#"><img src="https://goo.gl/oM0Y8G" alt="" /></a
+              ></span>
+              <span
+                ><a href="#"><img src="https://goo.gl/vswgSn" alt="" /></a
+              ></span>
+              <span
+                ><a href="#"><img src="https://goo.gl/4W27eB" alt="" /></a
+              ></span>
               <span><a href="#">+99</a></span>
               <span>Like this</span>
             </div>

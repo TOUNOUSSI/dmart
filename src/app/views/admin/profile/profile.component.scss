@@ -3,6 +3,7 @@ $light-text: #036;
 $dark-background: #6b717f;
 $dark-text: #d2e1dd;
 
+//Large screens
 @media only screen and (min-width: 414px) {
 
 
@@ -185,7 +186,6 @@ $dark-text: #d2e1dd;
     padding: 0;
     width: 100%;
     box-sizing: border-box;
-    height: 350px;
   }
 
   .profile-intro-container {

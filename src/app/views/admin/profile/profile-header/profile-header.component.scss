@@ -418,7 +418,7 @@
     width: 34px;
     top: 96%;
     left: 53%;
-    z-index: 1;
+    z-index: 2;
   }
 
   .profile-picture-avatar-fontawsome {
@@ -523,7 +523,7 @@
     background-color: transparent;
     z-index: -1;
     position: absolute;
-    height: 248%;
+    height: 200%;
     width: 100%;
 
   }
@@ -634,7 +634,6 @@
   .profile-intro-container>a {
 
     display: block;
-    color: blue($color: #000000);
     text-align: center;
     text-decoration: none;
     font-weight: bold;
@@ -822,7 +821,7 @@
     width: 34px;
     top: 96%;
     left: 61%;
-    z-index: 1;
+    z-index: 2;
   }
 
   .profile-picture-avatar-fontawsome {
