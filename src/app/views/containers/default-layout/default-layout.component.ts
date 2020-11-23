@@ -27,7 +27,7 @@ export class DefaultLayoutComponent implements OnInit {
   public sidebarMinimized = true;
   public navItems = navItems;
   public matchingUsers: User[] = [];
-
+  public search_id: string = "dmart-search-id";
   public pseudoname: string = "";
   public myProfile: any;
   myFormGroup: FormGroup;
