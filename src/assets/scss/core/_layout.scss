@@ -33,6 +33,7 @@ app-root {
   .main {
     flex: 1;
     min-width: 0;
+    overflow: hidden;
   }
 
   .sidebar {
@@ -52,15 +53,18 @@ html:not([dir="rtl"]) {
   .sidebar {
     margin-left: - $sidebar-width;
   }
+
   .aside-menu {
     right: 0;
     margin-right: - $aside-menu-width;
   }
 }
+
 html[dir="rtl"] {
   .sidebar {
     margin-right: - $sidebar-width;
   }
+
   .aside-menu {
     left: 0;
     margin-left: - $aside-menu-width;
@@ -68,6 +72,7 @@ html[dir="rtl"] {
 }
 
 @include media-breakpoint-up($breakpoint-mobile-up) {
+
   //
   // Header
   //
@@ -77,10 +82,12 @@ html[dir="rtl"] {
       z-index: $zindex-sticky;
       width: 100%;
     }
+
     .app-body {
       margin-top: $navbar-height;
     }
   }
+
   //
   // Sidebar
   //
@@ -92,8 +99,9 @@ html[dir="rtl"] {
       height: 100vh;
     }
   }
+
   .sidebar-fixed {
-    .app-header + .app-body .sidebar {
+    .app-header+.app-body .sidebar {
       height: calc(100vh - #{$navbar-height});
     }
   }
@@ -108,6 +116,7 @@ html[dir="rtl"] {
         width: $sidebar-compact-width;
       }
     }
+
     .sidebar-minimizer {
       display: none;
     }
@@ -134,7 +143,7 @@ html[dir="rtl"] {
   }
 
   .sidebar-off-canvas {
-    .app-header + .app-body .sidebar {
+    .app-header+.app-body .sidebar {
       height: calc(100vh - #{$navbar-height});
     }
   }
@@ -145,18 +154,21 @@ html[dir="rtl"] {
         margin-left: - $sidebar-compact-width;
       }
     }
+
     .sidebar-minimized {
       .sidebar {
         margin-left: - $sidebar-minimized-width;
       }
     }
   }
+
   html[dir="rtl"] {
     .sidebar-compact {
       .sidebar {
         margin-right: - $sidebar-compact-width;
       }
     }
+
     .sidebar-minimized {
       .sidebar {
         margin-right: - $sidebar-minimized-width;
@@ -179,7 +191,7 @@ html[dir="rtl"] {
   }
 
   .aside-menu-fixed {
-    .app-header + .app-body .aside-menu {
+    .app-header+.app-body .aside-menu {
       height: calc(100vh - #{$navbar-height});
     }
   }
@@ -193,12 +205,13 @@ html[dir="rtl"] {
   }
 
   .aside-menu-off-canvas {
-    .app-header + .app-body .aside-menu {
+    .app-header+.app-body .aside-menu {
       height: calc(100vh - #{$navbar-height});
     }
   }
 
   html:not([dir="rtl"]) {
+
     .aside-menu-fixed,
     .aside-menu-off-canvas {
       .aside-menu {
@@ -206,7 +219,9 @@ html[dir="rtl"] {
       }
     }
   }
+
   html[dir="rtl"] {
+
     .aside-menu-fixed,
     .aside-menu-off-canvas {
       .aside-menu {
@@ -237,32 +252,42 @@ html[dir="rtl"] {
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
     html:not([dir="rtl"]) {
+
       .sidebar#{$infix}-show,
       .sidebar-show {
         .sidebar {
           margin-left: 0;
         }
-        @if $breakpoint != "xs" {
+
+        @if $breakpoint !="xs" {
           &.sidebar-fixed {
+
             .main,
             .app-footer {
               margin-left: $sidebar-width;
             }
+
             &.sidebar-compact {
+
               .main,
               .app-footer {
                 margin-left: $sidebar-compact-width;
               }
             }
+
             &.sidebar-minimized {
               @include media-breakpoint-down($breakpoint-mobile-down) {
+
                 .main,
                 .app-footer {
                   margin-left: $sidebar-width;
                 }
               }
+
               @include media-breakpoint-up($breakpoint-mobile-up) {
+
                 .main,
                 .app-footer {
                   margin-left: $sidebar-minimized-width;
@@ -270,15 +295,18 @@ html[dir="rtl"] {
               }
             }
           }
+
           &.breadcrumb-fixed {
             .breadcrumb {
               left: $sidebar-width;
             }
+
             &.sidebar-compact {
               .breadcrumb {
                 left: $sidebar-compact-width;
               }
             }
+
             &.sidebar-minimized {
               .breadcrumb {
                 left: $sidebar-minimized-width;
@@ -293,13 +321,16 @@ html[dir="rtl"] {
         .aside-menu {
           margin-right: 0;
         }
-        @if $breakpoint != "xs" {
+
+        @if $breakpoint !="xs" {
           &.aside-menu-fixed {
+
             .main,
             .app-footer {
               margin-right: $aside-menu-width;
             }
           }
+
           &.breadcrumb-fixed {
             .breadcrumb {
               right: $aside-menu-width;
@@ -310,31 +341,40 @@ html[dir="rtl"] {
     }
 
     html[dir="rtl"] {
+
       .sidebar#{$infix}-show,
       .sidebar-show {
         .sidebar {
           margin-right: 0;
         }
-        @if $breakpoint != "xs" {
+
+        @if $breakpoint !="xs" {
           &.sidebar-fixed {
+
             .main,
             .app-footer {
               margin-right: $sidebar-width;
             }
+
             &.sidebar-compact {
+
               .main,
               .app-footer {
                 margin-right: $sidebar-compact-width;
               }
             }
+
             &.sidebar-minimized {
               @include media-breakpoint-down($breakpoint-mobile-down) {
+
                 .main,
                 .app-footer {
                   margin-right: $sidebar-width;
                 }
               }
+
               @include media-breakpoint-up($breakpoint-mobile-up) {
+
                 .main,
                 .app-footer {
                   margin-right: $sidebar-minimized-width;
@@ -342,15 +382,18 @@ html[dir="rtl"] {
               }
             }
           }
+
           &.breadcrumb-fixed {
             .breadcrumb {
               right: $sidebar-width;
             }
+
             &.sidebar-compact {
               .breadcrumb {
                 right: $sidebar-compact-width;
               }
             }
+
             &.sidebar-minimized {
               .breadcrumb {
                 right: $sidebar-minimized-width;
@@ -365,13 +408,16 @@ html[dir="rtl"] {
         .aside-menu {
           margin-left: 0;
         }
-        @if $breakpoint != "xs" {
+
+        @if $breakpoint !="xs" {
           &.aside-menu-fixed {
+
             .main,
             .app-footer {
               margin-left: $aside-menu-width;
             }
           }
+
           &.breadcrumb-fixed {
             .breadcrumb {
               left: $aside-menu-width;
@@ -384,14 +430,20 @@ html[dir="rtl"] {
     .sidebar#{$infix}-show,
     .aside-menu#{$infix}-show {
       @keyframes opacity {
-        0%   { opacity: 0; }
-        100% { opacity: 1; }
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
       }
 
-      @if $breakpoint == "xs" {
+      @if $breakpoint=="xs" {
         @include media-breakpoint-down(xs) {
           .main {
             position: relative;
+
             &::before {
               position: absolute;
               top: 0;
@@ -438,9 +490,11 @@ html[dir="rtl"] {
 .aside-menu {
   transition: margin-left $layout-transition-speed, margin-right $layout-transition-speed, width $layout-transition-speed, flex $layout-transition-speed;
 }
+
 .sidebar-nav {
   transition: width $layout-transition-speed;
 }
+
 .breadcrumb {
   transition: left $layout-transition-speed, right $layout-transition-speed, width $layout-transition-speed;
 }
@@ -454,17 +508,23 @@ html[dir="rtl"] {
     z-index: $zindex-sticky;
     width: 100%;
     text-align: center;
-    @if $navbar-brand-bg == transparent {
+
+    @if $navbar-brand-bg==transparent {
       background-color: $navbar-bg;
-    } @else {
+    }
+
+    @else {
       background-color: $navbar-brand-bg;
     }
+
     @include borders($navbar-brand-border);
 
     .navbar-toggler {
-      @if (lightness( $navbar-brand-bg ) > 40) {
+      @if (lightness($navbar-brand-bg) > 40) {
         color: $navbar-color;
-      } @else {
+      }
+
+      @else {
         color: #fff;
       }
     }

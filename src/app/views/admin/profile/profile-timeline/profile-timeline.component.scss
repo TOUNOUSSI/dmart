@@ -1,6 +1,15 @@
+$comment-bg-color: rgb(103 102 102 / 12%);
+
 //Tablets, Laptops and desktop screens 
 @media only screen and(min-width: 415px) {
 
+
+  .btn-new-post-open-modal {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
 
   .timeline-container-scroll {
     margin: 60px 0;
@@ -43,7 +52,7 @@
     line-height: 30px;
     margin: 0;
     padding: 0 10px;
-    width: calc(100% - 20px) !important;
+    width: 100%;
   }
 
   .profile-timeline-col-right>h2 {
@@ -669,23 +678,23 @@
 
   .profile-timeline-col-right>.box>.box-new-comment>.content>.row>textarea:focus,
   .profile-timeline-col-right>.box.image>.box-new-comment>.content:active>.row {
-    background: #FFF;
+    background-color: $comment-bg-color;
   }
 
   .profile-timeline-col-right>.box>.box-new-comment>.content>.row>textarea:focus,
   .profile-timeline-col-right>.box.video .box-new-comment>.content:active>.row {
-    background: #FFF;
+    background-color: $comment-bg-color;
   }
 
 
   .profile-timeline-col-right>.box>.box-new-post>.content>.row>textarea:focus,
   .profile-timeline-col-right>.box.image>.box-new-post>.content:active>.row {
-    background: #FFF;
+    background-color: $comment-bg-color;
   }
 
   .profile-timeline-col-right>.box>.box-new-post>.content>.row>textarea:focus,
   .profile-timeline-col-right>.box.video .box-new-post>.content:active>.row {
-    background: #FFF;
+    background-color: $comment-bg-color;
   }
 
   .profile-intro-fontawsome {
@@ -784,7 +793,12 @@
 
   }
 
-
+  .btn-new-post-open-modal {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
 
   textarea {
     border: 0;
@@ -793,11 +807,7 @@
     line-height: 30px;
     margin: 0;
     padding: 0 10px;
-    width: calc(100% - 20px) !important;
-  }
-
-  .timeline-container-scroll {
-    margin: 60px 0;
+    width: 100%;
   }
 
   .table {
@@ -819,12 +829,6 @@
     padding-top: 0;
   }
 
-
-
-  .timeline-container-scroll {
-    margin: 60px 0;
-  }
-
   .profile-timeline {
     list-style-type: none;
     margin: 0;
@@ -841,16 +845,6 @@
 
   .new-post {
     position: relative;
-  }
-
-  textarea {
-    border: 0;
-    font-size: 13px;
-    height: 30px;
-    line-height: 30px;
-    margin: 0;
-    padding: 0 10px;
-    width: calc(100% - 20px) !important;
   }
 
   .profile-timeline-col-right>h2 {
@@ -929,7 +923,6 @@
 
   .profile-timeline-col-right>.box>.box-header>span {
     border-radius: 3px;
-    color: #BCBFC6;
     cursor: pointer;
     font-size: 24px;
     height: 18px;
@@ -961,11 +954,12 @@
   }
 
   .profile-timeline-col-right>.box>.box-content {
-    margin: 0;
+    border-radius: 4px 4px 7px 7px;
     overflow: hidden;
-    padding: 0;
+    padding: 0px 0px 0 0px;
+    /* margin: 13px 9px 4px; */
     position: relative;
-    width: initial;
+    width: 88vw;
   }
 
   .profile-timeline-col-right>.box>.box-content>.content {
@@ -979,21 +973,20 @@
 
   .profile-timeline-col-right>.box>.box-content>.bottom {
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 2px 2px;
     position: relative;
     width: initial;
+
   }
 
   .profile-timeline-col-right>.box>.box-content>.bottom>p {
-    color: whitesmoke;
     font-size: 15px;
     line-height: 20px;
     margin: 0;
-    padding: 3px 0;
+    padding: 3px 3px;
   }
 
   .profile-timeline-col-right>.box>.box-comments>.comment>.content>.bottom>p {
-    color: whitesmoke;
     /* font-size: 15px; */
     /* line-height: 20px; */
     /* top: 16px; */
@@ -1207,7 +1200,7 @@
     position: relative;
     width: initial;
     display: block;
-    background-color: rgba(103, 102, 102, 0.48);
+    background-color: $comment-bg-color;
     border-radius: 12px;
     padding: 0px 9px;
     margin: 3px 0px 3px 0px;
@@ -1473,23 +1466,23 @@
 
   .profile-timeline-col-right>.box>.box-new-comment>.content>.row>textarea:focus,
   .profile-timeline-col-right>.box.image>.box-new-comment>.content:active>.row {
-    background: #FFF;
+    background-color: $comment-bg-color;
   }
 
   .profile-timeline-col-right>.box>.box-new-comment>.content>.row>textarea:focus,
   .profile-timeline-col-right>.box.video .box-new-comment>.content:active>.row {
-    background: #FFF;
+    background-color: $comment-bg-color;
   }
 
 
   .profile-timeline-col-right>.box>.box-new-post>.content>.row>textarea:focus,
   .profile-timeline-col-right>.box.image>.box-new-post>.content:active>.row {
-    background: #FFF;
+    background-color: $comment-bg-color;
   }
 
   .profile-timeline-col-right>.box>.box-new-post>.content>.row>textarea:focus,
   .profile-timeline-col-right>.box.video .box-new-post>.content:active>.row {
-    background: #FFF;
+    background-color: $comment-bg-color;
   }
 
   .profile-intro-fontawsome {

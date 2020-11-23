@@ -11,7 +11,7 @@ import { ProfileService } from "src/app/services/profile/profile.service";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { MessengerService } from "src/app/services/messenger/messenger.service";
 import { Profile } from "src/app/models/profile.model";
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from "ngx-cookie-service";
 
 const rand = (max) => Math.floor(Math.random() * max);
 
@@ -43,18 +43,17 @@ export class ProfileHeaderComponent implements OnInit {
   fileToUpload: File;
 
   isSaveSideBarShown: boolean = true;
-  isMyProfile : boolean = true;
-  areWeAlreadyFriend : boolean = true;
+  isMyProfile: boolean = true;
+  areWeAlreadyFriend: boolean = true;
 
   ngOnInit() {
-    if(this.pseudoname !== this.cookieService.get('__psdnm_')){
+    if (this.pseudoname !== this.cookieService.get("__psdnm_")) {
       this.isMyProfile = false;
     }
-     this.messengerService.AreWeAlreadyFriend(this.pseudoname)
-     .then(resp=>{
-        this.areWeAlreadyFriend =  JSON.parse(JSON.stringify(resp))
-        console.log("Are we friends : "+this.areWeAlreadyFriend)
-     });
+    this.messengerService.AreWeAlreadyFriend(this.pseudoname).then((resp) => {
+      this.areWeAlreadyFriend = JSON.parse(JSON.stringify(resp));
+      console.log("Are we friends : " + this.areWeAlreadyFriend);
+    });
     if (
       this.loadedProfile.pictures !== undefined &&
       this.loadedProfile.pictures.length > 0
@@ -84,6 +83,10 @@ export class ProfileHeaderComponent implements OnInit {
     this.imagePathBackup = this.profileCoverImage;
   }
 
+  /**
+   * @todo apply this only on large screens and not on small devices (mobile)
+   * @param event
+   */
   @HostListener("window:scroll", ["$event"])
   scrollHandler(event) {
     let profile = document.getElementById(
@@ -95,30 +98,33 @@ export class ProfileHeaderComponent implements OnInit {
     let timelineContainer = document.getElementById(
       "timeline-container"
     ) as HTMLDivElement;
+    if (profile !== undefined) {
+      console.log("applieeeeeeeeeeeeeeeeeeeeeeeeeeed = " + window.innerWidth);
 
-    //if( window.pageYOffset>= 526.4000244140625){
-    if (window.pageYOffset >= 526.4000244140625) {
-      profile.classList.remove("profile-horizontal-list-start");
-      profile.classList.add("profile-horizontal-list-start-fixed");
+      //if( window.pageYOffset>= 526.4000244140625){
+      if (window.pageYOffset >= 526.4000244140625 && window.innerWidth > 414) {
+        profile.classList.add("profile-horizontal-list-start-fixed");
 
-      profileBlurredBackground.classList.add(
-        "profile-background-container-fixed"
-      );
-      profileBlurredBackground.classList.remove("profile-background-container");
+        profileBlurredBackground.classList.add(
+          "profile-background-container-fixed"
+        );
+        profileBlurredBackground.classList.remove(
+          "profile-background-container"
+        );
 
-      timelineContainer.classList.add("timeline-container-scroll");
-      timelineContainer.classList.remove("timeline-container");
-    } else {
-      profile.classList.remove("profile-horizontal-list-start-fixed");
-      profile.classList.add("profile-horizontal-list-start");
+        timelineContainer.classList.add("timeline-container-scroll");
+        timelineContainer.classList.remove("timeline-container");
+      } else {
+        profile.classList.remove("profile-horizontal-list-start-fixed");
 
-      profileBlurredBackground.classList.remove(
-        "profile-background-container-fixed"
-      );
-      profileBlurredBackground.classList.add("profile-background-container");
+        profileBlurredBackground.classList.remove(
+          "profile-background-container-fixed"
+        );
+        profileBlurredBackground.classList.add("profile-background-container");
 
-      timelineContainer.classList.remove("timeline-container-scroll");
-      timelineContainer.classList.add("timeline-container");
+        timelineContainer.classList.remove("timeline-container-scroll");
+        timelineContainer.classList.add("timeline-container");
+      }
     }
   }
 
@@ -210,11 +216,11 @@ export class ProfileHeaderComponent implements OnInit {
   }
 
   /**
-   * 
+   *
    */
-  onAddNewFriendToFriendList(){
-    console.log("adding '"+this.pseudoname+"' to friend list")
-    this.messengerService.addFriend(this.pseudoname)
+  onAddNewFriendToFriendList() {
+    console.log("adding '" + this.pseudoname + "' to friend list");
+    this.messengerService.addFriend(this.pseudoname);
   }
 
   public switchSaveSideBarShown() {

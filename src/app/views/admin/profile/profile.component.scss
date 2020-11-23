@@ -7,6 +7,14 @@ $dark-text: #d2e1dd;
 @media only screen and (min-width: 414px) {
 
 
+  .row {
+    display: inline;
+    /* flex-wrap: wrap; */
+    /* margin-right: -15px; */
+    /* margin-left: -15px; */
+  }
+
+
   .profile-body {
     margin: 0 21%;
     padding: 0;
