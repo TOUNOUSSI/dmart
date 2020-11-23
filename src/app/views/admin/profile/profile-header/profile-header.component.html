@@ -23,7 +23,7 @@
   </div>
 
   <picture>
-    <form class="md-form" *ngIf="!isMyProfile && !areWeAlreadyFriend">
+    <form class="md-form" *ngIf="isMyProfile">
       <div class="file-field big-2 change-cover-btn-container">
         <div
           class="btn btn-outline-secondary btn-rounded waves-effect btn-lg change-cover-btn"
@@ -64,7 +64,7 @@
   <picture>
     <form class="md-form">
       <div
-        *ngIf="!isMyProfile && !areWeAlreadyFriend"
+        *ngIf="isMyProfile"
         class="edit-profile-pic-container btn btn-outline-secondary btn-rounded waves-effect"
         (click)="onClickOpenProfilePictureChooseDialogue($event)"
       >
