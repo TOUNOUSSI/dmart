@@ -60,9 +60,7 @@ export class ProfileHeaderComponent implements OnInit {
     ) {
       this.isMyProfile = false;
     }
-    if (this.pseudoname !== localStorage.getItem("__psdnm_")) {
-      this.isMyProfile = false;
-    }
+
     this.messengerService.AreWeAlreadyFriend(this.pseudoname).then((resp) => {
       this.areWeAlreadyFriend = JSON.parse(JSON.stringify(resp));
       console.log("Are we friends : " + this.areWeAlreadyFriend);
