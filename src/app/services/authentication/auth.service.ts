@@ -36,6 +36,10 @@ export class AuthService {
       .pipe(
         tap((response: any) => {
           localStorage.setItem("Currentuser", user.username);
+          localStorage.setItem(
+            "__psdnm_",
+            response.authenticatedUser.pseudoname
+          );
           localStorage.setItem("Token", response.token);
           this.cookieService.set(
             "__psdnm_",
