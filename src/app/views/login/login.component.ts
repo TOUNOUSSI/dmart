@@ -13,8 +13,7 @@ export class LoginComponent implements OnInit {
   user: User = new User();
   constructor(
     private authService: AuthService,
-    private toasterService: SnackbarService,
-    private cookieService: CookieService
+    private toasterService: SnackbarService
   ) {}
 
   ngOnInit() {}
@@ -25,18 +24,6 @@ export class LoginComponent implements OnInit {
       this.authService.logIn(this.user).subscribe(
         (response) => {
           if (response.authenticatedUser.error === undefined) {
-            this.cookieService.set(
-              "__psdnm_",
-              response.authenticatedUser.pseudoname
-            );
-            this.cookieService.set(
-              "__token_",
-              response.authenticatedUser.token
-            );
-            this.cookieService.set(
-              "__usrnm_",
-              response.authenticatedUser.username
-            );
             this.toasterService.message = "Welcome to DMART";
             this.toasterService.open();
           } else {

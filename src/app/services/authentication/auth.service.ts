@@ -7,6 +7,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, tap } from "rxjs/operators";
 import { of } from "rxjs";
 import { SnackbarService } from "../notifications/toaster/snackbar.service";
+import { CookieService } from "ngx-cookie-service";
 
 const AUTH_URI = "/gmartws-core-auth";
 @Injectable()
@@ -24,7 +25,8 @@ export class AuthService {
   constructor(
     private router: Router,
     public https: HttpClient,
-    private toasterService: SnackbarService
+    private toasterService: SnackbarService,
+    private cookieService: CookieService
   ) {}
 
   public logIn(user: User) {
@@ -35,6 +37,12 @@ export class AuthService {
         tap((response: any) => {
           localStorage.setItem("Currentuser", user.username);
           localStorage.setItem("Token", response.token);
+          this.cookieService.set(
+            "__psdnm_",
+            response.authenticatedUser.pseudoname
+          );
+          this.cookieService.set("__token_", response.token);
+          this.cookieService.set("__usrnm_", user.username);
           this.loggedIn$.next(true);
           this.tokn = response.accessToken;
           this.router.navigate(["/admin/dashboard"]);

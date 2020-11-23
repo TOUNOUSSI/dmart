@@ -172,8 +172,6 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
     console.log("Open dialog called");
   }
 
-  defaultTouch = { x: 0, y: 0, time: 0 };
-
   @HostListener("swiperight", ["$event"])
   public swipeRightHandler(event) {
     console.log("event " + event.type + " listener");
