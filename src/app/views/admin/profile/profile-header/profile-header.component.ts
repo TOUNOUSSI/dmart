@@ -47,17 +47,7 @@ export class ProfileHeaderComponent implements OnInit {
   areWeAlreadyFriend: boolean = true;
 
   ngOnInit() {
-    if (
-      window.innerWidth <= 514 &&
-      this.pseudoname !== localStorage.getItem("__psdnm_")
-    ) {
-      this.isMyProfile = false;
-    }
-
-    if (
-      window.innerWidth > 514 &&
-      this.pseudoname !== this.cookieService.get("__psdnm_")
-    ) {
+    if (this.pseudoname !== this.cookieService.get("__psdnm_")) {
       this.isMyProfile = false;
     }
 
