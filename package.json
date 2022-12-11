@@ -39,7 +39,7 @@
     "codelyzer": "^5.2.1",
     "compass-mixins": "^0.12.10",
     "electron": "^7.1.9",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "flag-icon-css": "^3.4.5",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
